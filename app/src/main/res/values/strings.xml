@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Learn Calculus by Doing</string>
+    <string name="question_number">Question 1/10</string>
+
+    <string name="question1_title">In which of the alternatives below does the limit exist?</string>
+    <string name="question1_option1"></string>
+</resources>
