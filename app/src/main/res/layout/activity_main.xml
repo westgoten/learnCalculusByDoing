@@ -34,6 +34,12 @@
             android:layout_height="wrap_content"
             android:text="@string/question1_option1"/>
 
+    <mathjaxwebview.MathJaxWebView
+            android:id="@+id/webView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    />
+
 </LinearLayout>
 
 </ScrollView>

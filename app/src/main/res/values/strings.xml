@@ -3,5 +3,5 @@
     <string name="question_number">Question 1/10</string>
 
     <string name="question1_title">In which of the alternatives below does the limit exist?</string>
-    <string name="question1_option1"></string>
+    <string name="question1_option1">This come from string. You can insert inline formula: \\(ax^2 + bx + c = 0\\)</string>
 </resources>
