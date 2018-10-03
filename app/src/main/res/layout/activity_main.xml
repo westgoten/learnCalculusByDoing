@@ -15,24 +15,26 @@
         android:padding="16dp">
 
     <TextView
+            android:id="@+id/question_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/question_number"
-            android:textSize="60sp"
+            android:textSize="34sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"/>
 
-    <TextView
+    <io.github.kexanie.library.MathView
+            android:id="@+id/question_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/question1_title"
-            android:textSize="16sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            auto:engine="KaTeX"/>
 
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
 
         <CheckBox
@@ -40,7 +42,63 @@
                 android:layout_height="wrap_content"/>
 
         <io.github.kexanie.library.MathView
-                android:id="@+id/question1_op1"
+                android:id="@+id/question_op1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                auto:engine="KaTeX"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <io.github.kexanie.library.MathView
+                android:id="@+id/question_op2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                auto:engine="KaTeX"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <io.github.kexanie.library.MathView
+                android:id="@+id/question_op3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                auto:engine="KaTeX"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <io.github.kexanie.library.MathView
+                android:id="@+id/question_op4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 auto:engine="KaTeX"/>
