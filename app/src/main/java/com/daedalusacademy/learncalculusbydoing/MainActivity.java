@@ -6,9 +6,9 @@ import android.widget.TextView;
 import io.github.kexanie.library.MathView;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView questionNumberText;
-    private MathView questionTitle;
-    private MathView[] questionOptions = new MathView[4];
+    private int questionNumber = 1;
+
+    private final boolean[] questionAnswer1 = {false, false, true, true};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         this.questionNumberText = findViewById(R.id.question_number);
-        this.questionNumberText.setText(String.format(getString(R.string.question_number), 1));
+        this.questionNumberText.setText(String.format(getString(R.string.question_number), questionNumber));
 
         this.questionTitle = findViewById(R.id.question_title);
         this.questionTitle.setText(getString(R.string.question1_title));
@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         this.initializeQuestionView(4, R.id.question_op4, R.string.question1_option4);
     }
 
-    private void initializeQuestionView(int questionNumber, int viewId, int viewStringId) {
-        this.questionOptions[questionNumber-1] = findViewById(viewId);
-        this.questionOptions[questionNumber-1].setText(getString(viewStringId));
+    private void initializeQuestionView(int optionNumber, int viewId, int viewStringId) {
+        this.questionOptions[optionNumber-1] = findViewById(viewId);
+        this.questionOptions[optionNumber-1].setText(getString(viewStringId));
     }
 
 }
