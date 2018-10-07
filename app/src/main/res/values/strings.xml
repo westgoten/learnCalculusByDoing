@@ -2,9 +2,12 @@
     <string name="app_name">Learn Calculus by Doing</string>
     <string name="question_number">Question %d/10</string>
 
-    <string name="question1_title">In which of the alternatives below does the limit exist?</string>
-    <string name="question1_option1">\\(\\lim\\limits_{x \\to 3^+} f(x) = 1\\) ; \\(\\lim\\limits_{x \\to 3^-} f(x) = 3\\)</string>
-    <string name="question1_option2">\\(\\lim\\limits_{x \\to 2^+} g(x) = 2\\) ; \\(\\lim\\limits_{x \\to 2^-} g(x) = 4\\)</string>
-    <string name="question1_option3">\\(\\lim\\limits_{x \\to 1^+} h(x) = 7\\) ; \\(\\lim\\limits_{x \\to 1^-} h(x) = 7\\)</string>
-    <string name="question1_option4">\\(\\lim\\limits_{x \\to 3^+} j(x) = 9\\) ; \\(\\lim\\limits_{x \\to 3^-} j(x) = 9\\)</string>
+    <!-- Question 1 -->
+    <string-array name="MAQ_stringArray1">
+        <item>In which of the alternatives below does the limit exist?</item>
+        <item>\\(\\lim\\limits_{x \\to 3^+} f(x) = 1\\) ; \\(\\lim\\limits_{x \\to 3^-} f(x) = 3\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 2^+} g(x) = 2\\) ; \\(\\lim\\limits_{x \\to 2^-} g(x) = 4\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 1^+} h(x) = 7\\) ; \\(\\lim\\limits_{x \\to 1^-} h(x) = 7\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 3^+} j(x) = 9\\) ; \\(\\lim\\limits_{x \\to 3^-} j(x) = 9\\)</item>
+    </string-array>
 </resources>

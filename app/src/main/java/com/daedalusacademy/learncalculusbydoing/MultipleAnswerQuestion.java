@@ -1,15 +1,19 @@
 package com.daedalusacademy.learncalculusbydoing;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.CheckBox;
 import io.github.kexanie.library.MathView;
 
-public class MultipleAnswerQuestion {
-    private Context context;
+public class MultipleAnswerQuestion implements Question {
+    private final static int numberOfOptions = 4;
+    private static int numberOfQuestions = 0;
+
     private int questionNumber;
+    private Activity activity;
     private MathView questionTitle;
-    private MathView[] questionOptions;
-    private CheckBox[] questionButtons;
+    private MathView[] questionOptions = new MathView[numberOfOptions];
+    private CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
     private final static int titleId = R.id.question_title;
@@ -18,18 +22,32 @@ public class MultipleAnswerQuestion {
     private final static int[] buttonsId = {R.id.checkbox1, R.id.checkbox2, R.id.checkbox3,
             R.id.checkbox4};
 
-    public MultipleAnswerQuestion(Context context, int questionNumber, boolean[] answer) {
-        this.context = context;
-        this.questionNumber = questionNumber;
+    public MultipleAnswerQuestion(Context context, boolean[] answer) {
+        this.activity = (Activity) context;
         this.answer = answer;
+
+        this.questionTitle = this.activity.findViewById(titleId);
+
+        for (int i = 0; i < numberOfOptions; i++) {
+            this.questionOptions[i] = this.activity.findViewById(optionsId[i]);
+            this.questionButtons[i] = this.activity.findViewById(buttonsId[i]);
+        }
+
+        this.questionNumber = ++numberOfQuestions;
     }
 
-    public Context getContext() {
-        return context;
+    @Override
+    public void setViewsText() {
+
     }
 
-    public int getQuestionNumber() {
-        return questionNumber;
+    @Override
+    public boolean isAnswerCorrect() {
+        return false;
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 
     public MathView getQuestionTitle() {
@@ -47,6 +65,4 @@ public class MultipleAnswerQuestion {
     public boolean[] getAnswer() {
         return answer;
     }
-
-
 }
