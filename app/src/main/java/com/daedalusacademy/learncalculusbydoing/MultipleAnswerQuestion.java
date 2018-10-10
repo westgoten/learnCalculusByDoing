@@ -46,6 +46,10 @@ public class MultipleAnswerQuestion implements Question {
         return false;
     }
 
+    public static void resetNumberOfQuestions() {
+        numberOfQuestions = 0;
+    }
+
     public Activity getActivity() {
         return activity;
     }

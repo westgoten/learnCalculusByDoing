@@ -10,4 +10,71 @@
         <item>\\(\\lim\\limits_{x \\to 1^+} h(x) = 7\\) ; \\(\\lim\\limits_{x \\to 1^-} h(x) = 7\\)</item>
         <item>\\(\\lim\\limits_{x \\to 3^+} j(x) = 9\\) ; \\(\\lim\\limits_{x \\to 3^-} j(x) = 9\\)</item>
     </string-array>
+
+    <!-- Question 2 -->
+    <string-array name="MAQ_stringArray2">
+
+    </string-array>
+
+    <!-- Question 3 -->
+    <string-array name="MAQ_stringArray3">
+
+    </string-array>
+
+    <!-- Question 4 -->
+    <string-array name="MAQ_stringArray4">
+
+    </string-array>
+
+    <!-- MultipleAnswerQuestion Array -->
+    <array name="MAQ_array1">
+        <item>@array/MAQ_stringArray1</item>
+        <item>@array/MAQ_stringArray2</item>
+        <item>@array/MAQ_stringArray3</item>
+        <item>@array/MAQ_stringArray4</item>
+    </array>
+
+    <!-- Question 5 -->
+    <string-array name="SAQ_stringArray1">
+
+    </string-array>
+
+    <!-- Question 6 -->
+    <string-array name="SAQ_stringArray2">
+
+    </string-array>
+
+    <!-- Question 7 -->
+    <string-array name="SAQ_stringArray3">
+
+    </string-array>
+
+    <!-- SingleAnswerQuestion Array -->
+    <array name="SAQ_array1">
+        <item>@array/SAQ_stringArray1</item>
+        <item>@array/SAQ_stringArray2</item>
+        <item>@array/SAQ_stringArray3</item>
+    </array>
+
+    <!-- Question 8 -->
+    <string-array name="TAQ_stringArray1">
+
+    </string-array>
+
+    <!-- Question 9 -->
+    <string-array name="TAQ_stringArray2">
+
+    </string-array>
+
+    <!-- Question 10 -->
+    <string-array name="TAQ_stringArray3">
+
+    </string-array>
+
+    <!-- TextAnswerQuestion Array -->
+    <array name="TAQ_array1">
+        <item>@array/TAQ_stringArray1</item>
+        <item>@array/TAQ_stringArray2</item>
+        <item>@array/TAQ_stringArray3</item>
+    </array>
 </resources>
