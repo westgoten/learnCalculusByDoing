@@ -2,11 +2,14 @@ package com.daedalusacademy.learncalculusbydoing;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.Log;
 import android.widget.CheckBox;
 import io.github.kexanie.library.MathView;
 
 public class MultipleAnswerQuestion implements Question {
-    private final static int numberOfOptions = 4;
+    private static final int numberOfOptions = 4;
     private static int numberOfQuestions = 0;
 
     private int questionNumber;
@@ -16,11 +19,13 @@ public class MultipleAnswerQuestion implements Question {
     private CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
-    private final static int titleId = R.id.question_title;
-    private final static int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
+    private static final int titleId = R.id.question_title;
+    private static final int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
             R.id.question_op4};
     private final static int[] buttonsId = {R.id.checkbox1, R.id.checkbox2, R.id.checkbox3,
             R.id.checkbox4};
+
+    private static final String TAG = "MultipleAnswerQuestion";
 
     public MultipleAnswerQuestion(Context context, boolean[] answer) {
         this.activity = (Activity) context;
@@ -33,12 +38,28 @@ public class MultipleAnswerQuestion implements Question {
             this.questionButtons[i] = this.activity.findViewById(buttonsId[i]);
         }
 
-        this.questionNumber = ++numberOfQuestions;
+        this.questionNumber = numberOfQuestions++;
     }
 
     @Override
     public void setViewsText() {
+        Resources resources = this.activity.getResources();
+        TypedArray MAQArray = resources.obtainTypedArray(R.array.MAQ_array1);
+        int MAQStringArrayId = MAQArray.getResourceId(this.questionNumber, 0);
 
+        String[] MAQStringArray;
+        if (MAQStringArrayId > 0) {
+            MAQStringArray = resources.getStringArray(MAQStringArrayId);
+
+            this.questionTitle.setText(MAQStringArray[0]);
+
+            for (int i = 0; i < numberOfOptions; i++)
+                this.questionOptions[i].setText(MAQStringArray[i+1]);
+        } else {
+            Log.v(TAG, "MAQStringArrayId doesn't exist");
+        }
+
+        MAQArray.recycle();
     }
 
     @Override
