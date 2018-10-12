@@ -2,83 +2,8 @@
     <string name="app_name">Learn Calculus by Doing</string>
     <string name="question_number">Question %d/10</string>
 
-    <!-- Question 1 -->
-    <string-array name="MAQ_stringArray1">
-        <item>In which of the alternatives below does the limit exist?</item>
-        <item>\\(\\lim\\limits_{x \\to 3^+} f(x) = 1\\) ; \\(\\lim\\limits_{x \\to 3^-} f(x) = 3\\)</item>
-        <item>\\(\\lim\\limits_{x \\to 2^+} g(x) = 2\\) ; \\(\\lim\\limits_{x \\to 2^-} g(x) = 4\\)</item>
-        <item>\\(\\lim\\limits_{x \\to 1^+} h(x) = 7\\) ; \\(\\lim\\limits_{x \\to 1^-} h(x) = 7\\)</item>
-        <item>\\(\\lim\\limits_{x \\to 3^+} j(x) = 9\\) ; \\(\\lim\\limits_{x \\to 3^-} j(x) = 9\\)</item>
-    </string-array>
-
-    <!-- Question 2 -->
-    <string-array name="MAQ_stringArray2">
-        <item>In which of the alternatives below does continuity exist?</item>
-        <item>\\(f(2) = 7\\space;\\space\\lim\\limits_{x \\to 2} f(x) = 2\\)</item>
-        <item>\\(f(4) = 11\\space;\\space\\lim\\limits_{x \\to 4} f(x) = 11\\)</item>
-        <item>\\(f(7) = 6\\space;\\space\\lim\\limits_{x \\to 7} f(x) = 3\\)</item>
-        <item>\\(f(9) = 9\\space;\\space\\lim\\limits_{x \\to 9} f(x) = 9\\)</item>
-    </string-array>
-
-    <!-- Question 3 -->
-    <string-array name="MAQ_stringArray3">
-
-    </string-array>
-
-    <!-- Question 4 -->
-    <string-array name="MAQ_stringArray4">
-
-    </string-array>
-
-    <!-- MultipleAnswerQuestion Array -->
-    <array name="MAQ_array1">
-        <item>@array/MAQ_stringArray1</item>
-        <item>@array/MAQ_stringArray2</item>
-        <item>@array/MAQ_stringArray3</item>
-        <item>@array/MAQ_stringArray4</item>
-    </array>
-
-    <!-- Question 5 -->
-    <string-array name="SAQ_stringArray1">
-
-    </string-array>
-
-    <!-- Question 6 -->
-    <string-array name="SAQ_stringArray2">
-
-    </string-array>
-
-    <!-- Question 7 -->
-    <string-array name="SAQ_stringArray3">
-
-    </string-array>
-
-    <!-- SingleAnswerQuestion Array -->
-    <array name="SAQ_array1">
-        <item>@array/SAQ_stringArray1</item>
-        <item>@array/SAQ_stringArray2</item>
-        <item>@array/SAQ_stringArray3</item>
-    </array>
-
-    <!-- Question 8 -->
-    <string-array name="TAQ_stringArray1">
-
-    </string-array>
-
-    <!-- Question 9 -->
-    <string-array name="TAQ_stringArray2">
-
-    </string-array>
-
-    <!-- Question 10 -->
-    <string-array name="TAQ_stringArray3">
-
-    </string-array>
-
-    <!-- TextAnswerQuestion Array -->
-    <array name="TAQ_array1">
-        <item>@array/TAQ_stringArray1</item>
-        <item>@array/TAQ_stringArray2</item>
-        <item>@array/TAQ_stringArray3</item>
-    </array>
+    <!-- Button -->
+    <string name="button_text_submit">SUBMIT</string>
+    <string name="button_text_next">NEXT</string>
+    <string name="button_text_finish">FINISH</string>
 </resources>

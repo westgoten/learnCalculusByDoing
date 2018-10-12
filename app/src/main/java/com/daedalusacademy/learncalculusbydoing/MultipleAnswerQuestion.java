@@ -64,16 +64,23 @@ public class MultipleAnswerQuestion implements Question {
 
     @Override
     public boolean isAnswerCorrect() {
-        return false;
+        for (int i = 0; i < numberOfOptions; i++)
+            if (this.questionButtons[i].isChecked() != this.answer[i])
+                return false;
+        return true;
     }
 
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
     }
 
-    public Activity getActivity() {
-        return activity;
+    public void resetButtonsState(){
+        for (int i = 0; i < numberOfOptions; i++)
+            if (this.questionButtons[i].isChecked())
+                this.questionButtons[i].setChecked(false);
     }
+
+    public Activity getActivity() { return activity; }
 
     public MathView getQuestionTitle() {
         return questionTitle;
