@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
 public class MultipleAnswerQuestion implements Question {
@@ -70,14 +74,39 @@ public class MultipleAnswerQuestion implements Question {
         return true;
     }
 
+    @Override
+    public void highlightAnswer() {
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (this.questionButtons[i].isChecked() != this.answer[i])
+                ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
+            else
+                ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
+
+            this.questionButtons[i].setClickable(false);
+        }
+    }
+
+    @Override
+    public boolean hasUserInput() {
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (this.questionButtons[i].isChecked())
+                return true;
+        }
+        return false;
+    }
+
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
     }
 
     public void resetButtonsState(){
-        for (int i = 0; i < numberOfOptions; i++)
+        for (int i = 0; i < numberOfOptions; i++) {
             if (this.questionButtons[i].isChecked())
                 this.questionButtons[i].setChecked(false);
+
+            ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
+            this.questionButtons[i].setClickable(true);
+        }
     }
 
     public Activity getActivity() { return activity; }
@@ -96,5 +125,9 @@ public class MultipleAnswerQuestion implements Question {
 
     public boolean[] getAnswer() {
         return answer;
+    }
+
+    public static int getNumberOfOptions() {
+        return numberOfOptions;
     }
 }

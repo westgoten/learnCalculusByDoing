@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Objective Questions Answer -->
+    <color name="correctAnswer">#33cc33</color>
+    <color name="wrongAnswer">#cc0000</color>
+    <color name="noAnswer">@android:color/transparent</color>
 </resources>

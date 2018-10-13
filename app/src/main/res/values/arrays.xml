@@ -33,10 +33,10 @@
     <!-- Question 2 -->
     <string-array name="MAQ_stringArray2">
         <item>In which of the alternatives below does continuity exist?</item>
-        <item>\\(f(2) = 7\\space;\\space\\lim\\limits_{x \\to 2} f(x) = 2\\)</item>
-        <item>\\(f(4) = 11\\space;\\space\\lim\\limits_{x \\to 4} f(x) = 11\\)</item>
-        <item>\\(f(7) = 6\\space;\\space\\lim\\limits_{x \\to 7} f(x) = 3\\)</item>
-        <item>\\(f(9) = 9\\space;\\space\\lim\\limits_{x \\to 9} f(x) = 9\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 2} f(x) = 2\\space;\\space f(2) = 7\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 4} f(x) = 11\\space;\\space f(4) = 11\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 7} f(x) = 3\\space;\\space f(7) = 6\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 9} f(x) = 9\\space;\\space f(9) = 9\\)</item>
     </string-array>
 
     <!-- Question 3 -->
