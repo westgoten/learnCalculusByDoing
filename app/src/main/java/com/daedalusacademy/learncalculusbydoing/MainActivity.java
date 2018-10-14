@@ -23,17 +23,20 @@ public class MainActivity extends AppCompatActivity {
         MultipleAnswerQuestion.resetNumberOfQuestions();
 
         String[] questionsTypes = getResources().getStringArray(R.array.quiz_types);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) { // i < questionsTotal
             switch (questionsTypes[i]) {
                 case "MAQ":
                     this.questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "SAQ":
+                    this.questionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "TAQ":
                     break;
             }
         }
+
+        SingleAnswerQuestion.setUpRadioButtons();
 
         this.setUpNextQuestionText();
 
@@ -41,33 +44,34 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.button_text_next),
                 getString(R.string.button_text_finish)};
 
-        final Button clickButton = findViewById(R.id.button);
+        Button clickButton = findViewById(R.id.button);
         clickButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String currentButtonState = clickButton.getText().toString();
+                Button button = (Button) v;
+                String currentButtonState = button.getText().toString();
                 Question currentQuestion = questionsList[globalQuestionNumber-1];
 
-                if (currentQuestion instanceof MultipleAnswerQuestion) {
-                   if (currentButtonState.equals(buttonStateList[0])) {
-                       if (currentQuestion.hasUserInput()) {
-                           if (currentQuestion.isAnswerCorrect())
-                               score++;
-                           currentQuestion.highlightAnswer();
-                           if (globalQuestionNumber < questionsTotal)
-                               clickButton.setText(R.string.button_text_next);
-                           else
-                               clickButton.setText(R.string.button_text_finish);
-                           }
-                   } else if (currentButtonState.equals(buttonStateList[1])) {
-                       globalQuestionNumber++;
-                       setUpNextQuestionText();
-                       ((MultipleAnswerQuestion) currentQuestion).resetButtonsState();
-                       clickButton.setText(R.string.button_text_submit);
-                   } else if (currentButtonState.equals(buttonStateList[2])) {
-                       // TO DO (Intent to EndScreen Activity)
-                   }
-                } //TO DO (Other question types cases)
+                if (currentButtonState.equals(buttonStateList[0])) {
+                    if (currentQuestion.hasUserInput()) {
+                        if (currentQuestion.isAnswerCorrect())
+                            score++;
+                        currentQuestion.highlightAnswer();
+                        if (globalQuestionNumber < questionsTotal)
+                            button.setText(R.string.button_text_next);
+                        else
+                            button.setText(R.string.button_text_finish);
+                    }
+                } else if (currentButtonState.equals(buttonStateList[1])) {
+                    globalQuestionNumber++;
+                    setUpNextQuestionText();
+                    currentQuestion.resetInputViewsState();
+                    button.setText(R.string.button_text_submit);
+                    currentQuestion.setInputViewsVisibility(false);
+                    questionsList[globalQuestionNumber-1].setInputViewsVisibility(true);
+                } else if (currentButtonState.equals(buttonStateList[2])) {
+                    // TO DO (Intent to EndScreen Activity)
+                }
             }
         });
     }

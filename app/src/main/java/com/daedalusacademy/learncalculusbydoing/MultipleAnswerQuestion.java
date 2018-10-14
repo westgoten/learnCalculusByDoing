@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
@@ -26,7 +24,7 @@ public class MultipleAnswerQuestion implements Question {
     private static final int titleId = R.id.question_title;
     private static final int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
             R.id.question_op4};
-    private final static int[] buttonsId = {R.id.checkbox1, R.id.checkbox2, R.id.checkbox3,
+    private static final int[] buttonsId = {R.id.checkbox1, R.id.checkbox2, R.id.checkbox3,
             R.id.checkbox4};
 
     private static final String TAG = "MultipleAnswerQuestion";
@@ -95,11 +93,24 @@ public class MultipleAnswerQuestion implements Question {
         return false;
     }
 
-    public static void resetNumberOfQuestions() {
-        numberOfQuestions = 0;
+    @Override
+    public void setInputViewsVisibility(boolean isVisible) {
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (isVisible)
+                this.questionButtons[i].setVisibility(View.VISIBLE);
+            else
+                this.questionButtons[i].setVisibility(View.GONE);
+        }
+
+        LinearLayout parent = (LinearLayout) this.questionButtons[0].getParent().getParent();
+        if (isVisible)
+            parent.setVisibility(View.VISIBLE);
+        else
+            parent.setVisibility(View.GONE);
     }
 
-    public void resetButtonsState(){
+    @Override
+    public void resetInputViewsState(){
         for (int i = 0; i < numberOfOptions; i++) {
             if (this.questionButtons[i].isChecked())
                 this.questionButtons[i].setChecked(false);
@@ -107,6 +118,10 @@ public class MultipleAnswerQuestion implements Question {
             ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
             this.questionButtons[i].setClickable(true);
         }
+    }
+
+    public static void resetNumberOfQuestions() {
+        numberOfQuestions = 0;
     }
 
     public Activity getActivity() { return activity; }

@@ -9,6 +9,7 @@ public class QuizAnswers {
     static {
         objectiveAnswers.append(0, new boolean[]{false, false, true, true});
         objectiveAnswers.append(1, new boolean[]{false, true, false, true});
+        objectiveAnswers.append(2, new boolean[]{false, true, false, true}); // Must update to a real answer
     }
 
     public static boolean[] getObjectiveAnswer(int questionNumber) {

@@ -4,7 +4,7 @@
     <string-array name="quiz_types">
         <item>MAQ</item>
         <item>MAQ</item>
-        <item>MAQ</item>
+        <item>SAQ</item> <!-- MAQ -->
         <item>MAQ</item>
         <item>SAQ</item>
         <item>SAQ</item>
