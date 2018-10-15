@@ -28,38 +28,45 @@ public class SingleAnswerQuestion implements Question {
     private static final String TAG = "SingleAnswerQuestion";
 
     public SingleAnswerQuestion(Context context, boolean[] answer) {
-        activity = (Activity) context;
+        this.activity = (Activity) context;
         this.answer = answer;
 
         this.questionNumber = numberOfQuestions++;
 
         if (this.questionNumber == 0) {
-            questionTitle = activity.findViewById(titleId);
+            questionTitle = this.activity.findViewById(titleId);
 
             for (int i = 0; i < numberOfOptions; i++) {
-                questionOptions[i] = activity.findViewById(optionsId[i]);
-                questionButtons[i] = activity.findViewById(buttonsId[i]);
+                questionOptions[i] = this.activity.findViewById(optionsId[i]);
+                questionButtons[i] = this.activity.findViewById(buttonsId[i]);
             }
         }
     }
 
     @Override
-    public void setViewsText() {
+    public void setViewsText() { // TO DO
 
     }
 
     @Override
     public boolean isAnswerCorrect() {
-        return false;
+        for (int i = 0; i < numberOfOptions; i++)
+            if (questionButtons[i].isChecked() != this.answer[i])
+                return false;
+        return true;
     }
 
     @Override
-    public void highlightAnswer() {
+    public void highlightAnswer() { // TO DO
 
     }
 
     @Override
     public boolean hasUserInput() {
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (questionButtons[i].isChecked())
+                return true;
+        }
         return false;
     }
 
@@ -81,8 +88,14 @@ public class SingleAnswerQuestion implements Question {
     }
 
     @Override
-    public void resetInputViewsState() {
+    public void resetInputViewsState(){
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (questionButtons[i].isChecked())
+                questionButtons[i].setChecked(false);
 
+            ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
+            questionButtons[i].setClickable(true);
+        }
     }
 
     public static void setUpRadioButtons() {
@@ -100,6 +113,10 @@ public class SingleAnswerQuestion implements Question {
                 }
             });
         }
+    }
+
+    public static void resetNumberOfQuestions() {
+        numberOfQuestions = 0;
     }
 
     public static int getNumberOfOptions() {

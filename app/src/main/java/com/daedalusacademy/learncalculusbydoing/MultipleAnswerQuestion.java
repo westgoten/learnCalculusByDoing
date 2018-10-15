@@ -16,9 +16,9 @@ public class MultipleAnswerQuestion implements Question {
 
     private int questionNumber;
     private Activity activity;
-    private MathView questionTitle;
-    private MathView[] questionOptions = new MathView[numberOfOptions];
-    private CheckBox[] questionButtons = new CheckBox[numberOfOptions];
+    private static MathView questionTitle;
+    private static MathView[] questionOptions = new MathView[numberOfOptions];
+    private static CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
     private static final int titleId = R.id.question_title;
@@ -33,14 +33,16 @@ public class MultipleAnswerQuestion implements Question {
         this.activity = (Activity) context;
         this.answer = answer;
 
-        this.questionTitle = this.activity.findViewById(titleId);
-
-        for (int i = 0; i < numberOfOptions; i++) {
-            this.questionOptions[i] = this.activity.findViewById(optionsId[i]);
-            this.questionButtons[i] = this.activity.findViewById(buttonsId[i]);
-        }
-
         this.questionNumber = numberOfQuestions++;
+
+        if (this.questionNumber == 0) {
+            questionTitle = this.activity.findViewById(titleId);
+
+            for (int i = 0; i < numberOfOptions; i++) {
+                questionOptions[i] = this.activity.findViewById(optionsId[i]);
+                questionButtons[i] = this.activity.findViewById(buttonsId[i]);
+            }
+        }
     }
 
     @Override
@@ -53,10 +55,10 @@ public class MultipleAnswerQuestion implements Question {
         if (MAQStringArrayId > 0) {
             MAQStringArray = resources.getStringArray(MAQStringArrayId);
 
-            this.questionTitle.setText(MAQStringArray[0]);
+            questionTitle.setText(MAQStringArray[0]);
 
             for (int i = 0; i < numberOfOptions; i++)
-                this.questionOptions[i].setText(MAQStringArray[i+1]);
+                questionOptions[i].setText(MAQStringArray[i+1]);
         } else {
             Log.v(TAG, "MAQStringArrayId doesn't exist");
         }
@@ -67,7 +69,7 @@ public class MultipleAnswerQuestion implements Question {
     @Override
     public boolean isAnswerCorrect() {
         for (int i = 0; i < numberOfOptions; i++)
-            if (this.questionButtons[i].isChecked() != this.answer[i])
+            if (questionButtons[i].isChecked() != this.answer[i])
                 return false;
         return true;
     }
@@ -75,19 +77,19 @@ public class MultipleAnswerQuestion implements Question {
     @Override
     public void highlightAnswer() {
         for (int i = 0; i < numberOfOptions; i++) {
-            if (this.questionButtons[i].isChecked() != this.answer[i])
-                ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
+            if (questionButtons[i].isChecked() != this.answer[i])
+                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
             else
-                ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
+                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
 
-            this.questionButtons[i].setClickable(false);
+            questionButtons[i].setClickable(false);
         }
     }
 
     @Override
     public boolean hasUserInput() {
         for (int i = 0; i < numberOfOptions; i++) {
-            if (this.questionButtons[i].isChecked())
+            if (questionButtons[i].isChecked())
                 return true;
         }
         return false;
@@ -97,12 +99,12 @@ public class MultipleAnswerQuestion implements Question {
     public void setInputViewsVisibility(boolean isVisible) {
         for (int i = 0; i < numberOfOptions; i++) {
             if (isVisible)
-                this.questionButtons[i].setVisibility(View.VISIBLE);
+                questionButtons[i].setVisibility(View.VISIBLE);
             else
-                this.questionButtons[i].setVisibility(View.GONE);
+                questionButtons[i].setVisibility(View.GONE);
         }
 
-        LinearLayout parent = (LinearLayout) this.questionButtons[0].getParent().getParent();
+        LinearLayout parent = (LinearLayout) questionButtons[0].getParent().getParent();
         if (isVisible)
             parent.setVisibility(View.VISIBLE);
         else
@@ -112,11 +114,11 @@ public class MultipleAnswerQuestion implements Question {
     @Override
     public void resetInputViewsState(){
         for (int i = 0; i < numberOfOptions; i++) {
-            if (this.questionButtons[i].isChecked())
-                this.questionButtons[i].setChecked(false);
+            if (questionButtons[i].isChecked())
+                questionButtons[i].setChecked(false);
 
-            ((LinearLayout) this.questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
-            this.questionButtons[i].setClickable(true);
+            ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
+            questionButtons[i].setClickable(true);
         }
     }
 

@@ -7,10 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private int score = 0;
-    private int globalQuestionNumber;
+    private static int score = 0;
+    private static int globalQuestionNumber;
     private static final int questionsTotal = 10;
-    private Question[] questionsList = new Question[questionsTotal];
+    private static Question[] questionsList = new Question[questionsTotal];
 
     private static final String TAG = "MainActivity";
 
@@ -19,17 +19,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.globalQuestionNumber = 1;
+        globalQuestionNumber = 1;
         MultipleAnswerQuestion.resetNumberOfQuestions();
+        SingleAnswerQuestion.resetNumberOfQuestions();
 
         String[] questionsTypes = getResources().getStringArray(R.array.quiz_types);
         for (int i = 0; i < 3; i++) { // i < questionsTotal
             switch (questionsTypes[i]) {
                 case "MAQ":
-                    this.questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
+                    questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "SAQ":
-                    this.questionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
+                    questionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "TAQ":
                     break;
@@ -78,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNextQuestionText() {
         TextView questionNumberTextView = findViewById(R.id.question_number);
-        questionNumberTextView.setText(getString(R.string.question_number, this.globalQuestionNumber));
+        questionNumberTextView.setText(getString(R.string.question_number, globalQuestionNumber));
 
-        this.questionsList[this.globalQuestionNumber-1].setViewsText();
+        questionsList[globalQuestionNumber-1].setViewsText();
     }
 }
