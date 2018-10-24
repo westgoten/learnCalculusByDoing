@@ -59,7 +59,12 @@
 
     <!-- Question 5 -->
     <string-array name="SAQ_stringArray1">
-
+        <item>Solving a derivative by definition is a process of several steps. Which of the options
+        below is the second step of the derivative of \\(f(x) = x^2 - 3*x\\)?</item>
+        <item>\\(f'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)+2*(x+\\Delta x)+x^2+3*x}{\\Delta x}\\)</item>
+        <item>\\(f'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)^2-3*(x+\\Delta x)+x^2+3*x}{\\Delta x}\\)</item>
+        <item>\\(f'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)-2*(x+\\Delta x)+x^2+3*x}{\\Delta x}\\)</item>
+        <item>\\(f'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)^2-3*(x+\\Delta x)-x^2+3*x}{\\Delta x}\\)</item>
     </string-array>
 
     <!-- Question 6 -->
