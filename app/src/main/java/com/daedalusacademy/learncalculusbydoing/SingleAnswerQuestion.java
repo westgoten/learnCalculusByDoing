@@ -2,6 +2,9 @@ package com.daedalusacademy.learncalculusbydoing;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -45,7 +48,24 @@ public class SingleAnswerQuestion implements Question {
 
     @Override
     public void setViewsText() { // TO DO
+        Resources resources = this.activity.getResources();
+        TypedArray SAQArray = resources.obtainTypedArray(R.array.SAQ_array1);
+        int SAQStringArrayId = SAQArray.getResourceId(this.questionNumber, 0);
 
+        String[] SAQStringArray;
+        if (SAQStringArrayId > 0) {
+            SAQStringArray = resources.getStringArray(SAQStringArrayId);
+
+            questionTitle.setText(SAQStringArray[0]);
+
+            for (int i = 0; i < numberOfOptions; i++) {
+                questionOptions[i].setText(SAQStringArray[i+1]);
+            }
+        } else {
+            Log.v(TAG, "SAQStringArrayId doesn't exist.");
+        }
+
+        SAQArray.recycle();
     }
 
     @Override
@@ -57,8 +77,16 @@ public class SingleAnswerQuestion implements Question {
     }
 
     @Override
-    public void highlightAnswer() { // TO DO
+    public void highlightAnswer() {
+        for (int i = 0; i < numberOfOptions; i++) {
+            if (this.answer[i]) {
+                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
+            } else if (questionButtons[i].isChecked()) {
+                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
+            }
 
+            questionButtons[i].setClickable(false);
+        }
     }
 
     @Override

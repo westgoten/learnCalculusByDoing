@@ -77,10 +77,11 @@ public class MultipleAnswerQuestion implements Question {
     @Override
     public void highlightAnswer() {
         for (int i = 0; i < numberOfOptions; i++) {
-            if (questionButtons[i].isChecked() != this.answer[i])
+            if (questionButtons[i].isChecked() != this.answer[i]) {
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
-            else
+            } else {
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
+            }
 
             questionButtons[i].setClickable(false);
         }
