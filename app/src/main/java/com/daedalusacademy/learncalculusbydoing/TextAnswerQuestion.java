@@ -96,7 +96,7 @@ public class TextAnswerQuestion implements Question {
         return questionTitle;
     }
 
-    public static EditText getEditTextAnswer() {
+    public EditText getEditTextAnswer() {
         return editTextAnswer;
     }
 
