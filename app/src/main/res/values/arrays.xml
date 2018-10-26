@@ -5,7 +5,7 @@
         <item>MAQ</item>
         <item>MAQ</item>
         <item>SAQ</item> <!-- MAQ -->
-        <item>MAQ</item>
+        <item>TAQ</item> <!-- MAQ -->
         <item>SAQ</item>
         <item>SAQ</item>
         <item>SAQ</item>
@@ -84,25 +84,12 @@
         <item>@array/SAQ_stringArray3</item>
     </array>
 
-    <!-- Question 8 -->
-    <string-array name="TAQ_stringArray1">
-
+    <!-- Questions 8, 9 and 10 -->
+    <!-- TextAnswerQuestion StringArray -->
+    <string-array name="TAQ_stringArray">
+        <item>The derivative of the function \\(x^2+y^2=4\\) in the implicit form is \\(\\frac{-x}{a}\\).
+        What is the value of \\(a\\)?</item>
+        <item></item>
+        <item></item>
     </string-array>
-
-    <!-- Question 9 -->
-    <string-array name="TAQ_stringArray2">
-
-    </string-array>
-
-    <!-- Question 10 -->
-    <string-array name="TAQ_stringArray3">
-
-    </string-array>
-
-    <!-- TextAnswerQuestion Array -->
-    <array name="TAQ_array1">
-        <item>@array/TAQ_stringArray1</item>
-        <item>@array/TAQ_stringArray2</item>
-        <item>@array/TAQ_stringArray3</item>
-    </array>
 </resources>

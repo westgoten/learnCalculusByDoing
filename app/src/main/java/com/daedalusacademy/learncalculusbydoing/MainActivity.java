@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
         globalQuestionNumber = 1;
         MultipleAnswerQuestion.resetNumberOfQuestions();
         SingleAnswerQuestion.resetNumberOfQuestions();
+        TextAnswerQuestion.resetNumberOfQuestions();
 
         String[] questionsTypes = getResources().getStringArray(R.array.quiz_types);
-        for (int i = 0; i < 3; i++) { // i < questionsTotal
+        for (int i = 0; i < 4; i++) { // i < questionsTotal
             switch (questionsTypes[i]) {
                 case "MAQ":
                     questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
@@ -33,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
                     questionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "TAQ":
+                    questionsList[i] = new TextAnswerQuestion(this, QuizAnswers.getTextAnswer(i));
                     break;
             }
         }
 
         SingleAnswerQuestion.setUpRadioButtons();
-
         this.setUpNextQuestionText();
 
         final String[] buttonStateList = {getString(R.string.button_text_submit),

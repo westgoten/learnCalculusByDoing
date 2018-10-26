@@ -6,4 +6,7 @@
     <string name="button_text_submit">SUBMIT</string>
     <string name="button_text_next">NEXT</string>
     <string name="button_text_finish">FINISH</string>
+
+    <!-- TextAnswerQuestion -->
+    <string name="TAQ_answer_hint">Answer</string>
 </resources>
