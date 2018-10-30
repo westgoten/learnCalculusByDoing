@@ -9,8 +9,9 @@ public class QuizAnswers {
     static {
         objectiveAnswers.append(0, new boolean[]{false, false, true, true});
         objectiveAnswers.append(1, new boolean[]{false, true, false, true});
-        objectiveAnswers.append(2, new boolean[]{false, false, false, true});
-        textAnswers.append(3, "y");
+        objectiveAnswers.append(2, new boolean[]{true, true, true, false});
+        objectiveAnswers.append(3, new boolean[]{false, false, false, true});
+        textAnswers.append(4, "y");
     }
 
     public static boolean[] getObjectiveAnswer(int questionNumber) {

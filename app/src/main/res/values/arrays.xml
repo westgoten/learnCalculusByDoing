@@ -4,9 +4,9 @@
     <string-array name="quiz_types">
         <item>MAQ</item>
         <item>MAQ</item>
+        <item>MAQ</item>
         <item>SAQ</item> <!-- MAQ -->
-        <item>TAQ</item> <!-- MAQ -->
-        <item>SAQ</item>
+        <item>TAQ</item> <!-- SAQ -->
         <item>SAQ</item>
         <item>SAQ</item>
         <item>TAQ</item>
@@ -41,7 +41,11 @@
 
     <!-- Question 3 -->
     <string-array name="MAQ_stringArray3">
-
+        <item>Which of the limits below is/are horizontal asymptote(s)?</item>
+        <item>\\(\\lim\\limits_{x \\to +\\infty} \\frac{2x+1}{x}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{4x^3-2x+1}{2x^4}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{x+3}{2x}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{x^5+2x^2+1}{x^4-3x^2-3}\\)</item>
     </string-array>
 
     <!-- Question 4 -->
