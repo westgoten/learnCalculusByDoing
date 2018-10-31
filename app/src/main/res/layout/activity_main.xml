@@ -50,12 +50,14 @@
                     android:id="@+id/checkbox1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="visible"/>
 
             <RadioButton
                     android:id="@+id/radiobutton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="gone"/>
 
             <io.github.kexanie.library.MathView
@@ -78,12 +80,14 @@
                     android:id="@+id/checkbox2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="visible"/>
 
             <RadioButton
                     android:id="@+id/radiobutton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="gone"/>
 
             <io.github.kexanie.library.MathView
@@ -106,12 +110,14 @@
                     android:id="@+id/checkbox3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="visible"/>
 
             <RadioButton
                     android:id="@+id/radiobutton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="gone"/>
 
             <io.github.kexanie.library.MathView
@@ -134,12 +140,14 @@
                     android:id="@+id/checkbox4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="visible"/>
 
             <RadioButton
                     android:id="@+id/radiobutton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:visibility="gone"/>
 
             <io.github.kexanie.library.MathView

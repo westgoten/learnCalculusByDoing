@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         TextAnswerQuestion.resetNumberOfQuestions();
 
         String[] questionsTypes = getResources().getStringArray(R.array.quiz_types);
-        for (int i = 0; i < 5; i++) { // i < questionsTotal
+        for (int i = 0; i < 6; i++) { // i < questionsTotal
             switch (questionsTypes[i]) {
                 case "MAQ":
                     questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));

@@ -10,8 +10,9 @@ public class QuizAnswers {
         objectiveAnswers.append(0, new boolean[]{false, false, true, true});
         objectiveAnswers.append(1, new boolean[]{false, true, false, true});
         objectiveAnswers.append(2, new boolean[]{true, true, true, false});
-        objectiveAnswers.append(3, new boolean[]{false, false, false, true});
-        textAnswers.append(4, "y");
+        objectiveAnswers.append(3, new boolean[]{true, false, false, true});
+        objectiveAnswers.append(4, new boolean[]{false, false, false, true});
+        textAnswers.append(5, "y");
     }
 
     public static boolean[] getObjectiveAnswer(int questionNumber) {

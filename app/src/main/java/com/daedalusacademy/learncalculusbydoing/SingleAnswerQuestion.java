@@ -22,6 +22,7 @@ public class SingleAnswerQuestion implements Question {
     private static RadioButton[] questionButtons = new RadioButton[numberOfOptions];
     private boolean[] answer;
 
+    // TO DO: Move this IDs to arrays.xml resource
     private static final int titleId = R.id.question_title;
     private static final int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
             R.id.question_op4};

@@ -5,7 +5,8 @@
         <item>MAQ</item>
         <item>MAQ</item>
         <item>MAQ</item>
-        <item>SAQ</item> <!-- MAQ -->
+        <item>MAQ</item>
+        <item>SAQ</item> <!-- Extra -->
         <item>TAQ</item> <!-- SAQ -->
         <item>SAQ</item>
         <item>SAQ</item>
@@ -42,15 +43,19 @@
     <!-- Question 3 -->
     <string-array name="MAQ_stringArray3">
         <item>Which of the limits below is/are horizontal asymptote(s)?</item>
-        <item>\\(\\lim\\limits_{x \\to +\\infty} \\frac{2x+1}{x}\\)</item>
-        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{4x^3-2x+1}{2x^4}\\)</item>
-        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{x+3}{2x}\\)</item>
-        <item>\\(\\lim\\limits_{x \\to -\\infty} \\frac{x^5+2x^2+1}{x^4-3x^2-3}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to +\\infty} \\space \\dfrac{2x+1}{x}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\space \\dfrac{4x^3-2x+1}{2x^4}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\space \\dfrac{x+3}{2x}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to -\\infty} \\space \\dfrac{x^5+2x^2+1}{x^4-3x^2-3}\\)</item>
     </string-array>
 
     <!-- Question 4 -->
     <string-array name="MAQ_stringArray4">
-
+        <item>In which of the alternatives below does the limit exist?</item>
+        <item>\\(\\lim\\limits_{x \\to 0^+} \\space \\dfrac{\\sqrt{x}-1}{x^2}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 0} \\space \\dfrac{x^2+1}{\\sin x}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 2} \\space \\dfrac{5x-4}{x^2-4}\\)</item>
+        <item>\\(\\lim\\limits_{x \\to 5} \\space \\dfrac{2x^2+3}{(x-5)^2}\\)</item>
     </string-array>
 
     <!-- MultipleAnswerQuestion Array -->

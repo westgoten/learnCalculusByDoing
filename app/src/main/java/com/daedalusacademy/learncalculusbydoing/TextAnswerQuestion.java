@@ -16,6 +16,7 @@ public class TextAnswerQuestion implements Question {
     private EditText editTextAnswer;
     private String answer;
 
+    // TO DO: Move this IDs to arrays.xml resource
     private static final int titleId = R.id.question_title;
     private static final int editTextId = R.id.TAQ_edit_text;
 
