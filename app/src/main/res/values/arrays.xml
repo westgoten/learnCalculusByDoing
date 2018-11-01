@@ -6,21 +6,13 @@
         <item>MAQ</item>
         <item>MAQ</item>
         <item>MAQ</item>
-        <item>SAQ</item> <!-- Extra -->
-        <item>TAQ</item> <!-- SAQ -->
+        <item>SAQ</item>
         <item>SAQ</item>
         <item>SAQ</item>
         <item>TAQ</item>
         <item>TAQ</item>
         <item>TAQ</item>
     </string-array>
-
-    <!-- Quiz answers -->
-
-
-    <array name="quiz_answers">
-
-    </array>
 
     <!-- Question 1 -->
     <string-array name="MAQ_stringArray1">
@@ -78,12 +70,20 @@
 
     <!-- Question 6 -->
     <string-array name="SAQ_stringArray2">
-
+        <item>What is the equation of the normal line to the curve \\(f(x) = 2x^2+3x\\) at the point \\(x = 2\\)?</item>
+        <item>\\(y = 4x+3\\)</item>
+        <item>\\(y = \\dfrac{2x-13}{47}\\)</item>
+        <item>\\(y = \\dfrac{-x+156}{11}\\)</item>
+        <item>\\(y = -7x + 108\\)</item>
     </string-array>
 
     <!-- Question 7 -->
     <string-array name="SAQ_stringArray3">
-
+        <item>What is \\(f\'\'(2)\\) for \\(f(x) = \\ln (1+x^2)\\)?</item>
+        <item>\\(\\dfrac{-7x}{8}\\)</item>
+        <item>\\(27\\)</item>
+        <item>\\(\\dfrac{2x}{1+x^2}\\)</item>
+        <item>\\(\\dfrac{-6}{25}\\)</item>
     </string-array>
 
     <!-- SingleAnswerQuestion Array -->
