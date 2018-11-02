@@ -15,6 +15,7 @@ public class QuizAnswers {
         objectiveAnswers.append(5, new boolean[]{false, false, true, false});
         objectiveAnswers.append(6, new boolean[]{false, false, false, true});
         textAnswers.append(7, "y");
+        textAnswers.append(8, "2");
     }
 
     public static boolean[] getObjectiveAnswer(int questionNumber) {

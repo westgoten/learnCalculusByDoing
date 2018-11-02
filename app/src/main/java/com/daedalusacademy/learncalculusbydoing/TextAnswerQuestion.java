@@ -3,6 +3,7 @@ package com.daedalusacademy.learncalculusbydoing;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.EditText;
 import io.github.kexanie.library.MathView;
@@ -15,6 +16,8 @@ public class TextAnswerQuestion implements Question {
     private static MathView questionTitle;
     private EditText editTextAnswer;
     private String answer;
+
+    private Drawable editTextBackground;
 
     // TO DO: Move this IDs to arrays.xml resource
     private static final int titleId = R.id.question_title;
@@ -49,6 +52,8 @@ public class TextAnswerQuestion implements Question {
 
     @Override
     public void highlightAnswer() {
+        this.editTextBackground = editTextAnswer.getBackground();
+
         if (isAnswerCorrect())
             editTextAnswer.setBackgroundResource(R.color.correctAnswer);
         else
@@ -72,9 +77,9 @@ public class TextAnswerQuestion implements Question {
 
     @Override
     public void resetInputViewsState() {
-        editTextAnswer.setText("");
-        editTextAnswer.setBackgroundResource(R.color.noAnswer);
-        editTextAnswer.setFocusable(true);
+        editTextAnswer.setText(null);
+        editTextAnswer.setBackground(this.editTextBackground);
+        editTextAnswer.setFocusableInTouchMode(true);
     }
 
     public static void resetNumberOfQuestions() {
