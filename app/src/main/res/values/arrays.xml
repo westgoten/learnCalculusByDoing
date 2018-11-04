@@ -100,6 +100,10 @@
         What is the value of \\(a\\)?</item>
         <item>Solving the limit \\(\\lim\\limits_{x \\to +\\infty} (1 - \\frac{1}{x})^{2x}\\), we obtain
         \\(\\frac{1}{e^a}\\). What is the value of \\(a\\)?</item>
-        <item></item>
+        <item>A closed cylindrical vessel, in which the height is three times the radius, is increasing
+            in size, causing a change in the radius as a function of time according to the expression
+            \\(r = \\frac{t^2}{3} + 2t\\), the radius given in centimeters.\n\n When determining the rate of change of the total
+            area of the cylinder as a function of time at \\(t = 2s\\), we find the value \\(A\'(2) = \\frac{2560\\pi}{a}\\space cm^2/s\\).
+            What is the value of \\(a\\)?</item>
     </string-array>
 </resources>
