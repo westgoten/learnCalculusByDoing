@@ -14,6 +14,30 @@
         <item>TAQ</item>
     </string-array>
 
+    <!-- Question options views IDs -->
+    <array name="options_views_IDs">
+        <item>@id/question_op1</item>
+        <item>@id/question_op2</item>
+        <item>@id/question_op3</item>
+        <item>@id/question_op4</item>
+    </array>
+
+    <!-- CheckBoxes IDs -->
+    <array name="checkBoxes_IDs">
+        <item>@id/checkbox1</item>
+        <item>@id/checkbox2</item>
+        <item>@id/checkbox3</item>
+        <item>@id/checkbox4</item>
+    </array>
+
+    <!-- RadioButtons IDs -->
+    <array name="radioButtons_IDs">
+        <item>@id/radiobutton1</item>
+        <item>@id/radiobutton2</item>
+        <item>@id/radiobutton3</item>
+        <item>@id/radiobutton4</item>
+    </array>
+
     <!-- Question 1 -->
     <string-array name="MAQ_stringArray1">
         <item>In which of the alternatives below does the limit exist?</item>

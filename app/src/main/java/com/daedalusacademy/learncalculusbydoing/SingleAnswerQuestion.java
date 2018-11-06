@@ -22,13 +22,6 @@ public class SingleAnswerQuestion implements Question {
     private static RadioButton[] questionButtons = new RadioButton[numberOfOptions];
     private boolean[] answer;
 
-    // TO DO: Move this IDs to arrays.xml resource
-    private static final int titleId = R.id.question_title;
-    private static final int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
-            R.id.question_op4};
-    private static final int[] buttonsId = {R.id.radiobutton1, R.id.radiobutton2, R.id.radiobutton3,
-            R.id.radiobutton4};
-
     private static final String TAG = "SingleAnswerQuestion";
 
     public SingleAnswerQuestion(Context context, boolean[] answer) {
@@ -38,17 +31,12 @@ public class SingleAnswerQuestion implements Question {
         this.questionNumber = numberOfQuestions++;
 
         if (this.questionNumber == 0) {
-            questionTitle = this.activity.findViewById(titleId);
-
-            for (int i = 0; i < numberOfOptions; i++) {
-                questionOptions[i] = this.activity.findViewById(optionsId[i]);
-                questionButtons[i] = this.activity.findViewById(buttonsId[i]);
-            }
+            initializeViews();
         }
     }
 
     @Override
-    public void setViewsText() { // TO DO
+    public void setViewsText() {
         Resources resources = this.activity.getResources();
         TypedArray SAQArray = resources.obtainTypedArray(R.array.SAQ_array1);
         int SAQStringArrayId = SAQArray.getResourceId(this.questionNumber, 0);
@@ -146,6 +134,32 @@ public class SingleAnswerQuestion implements Question {
 
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
+    }
+
+    private void initializeViews() {
+        questionTitle = this.activity.findViewById(R.id.question_title);
+
+        Resources resources = this.activity.getResources();
+        TypedArray optionsArray = resources.obtainTypedArray(R.array.options_views_IDs);
+        TypedArray radioButtonsArray = resources.obtainTypedArray(R.array.radioButtons_IDs);
+
+        for (int i = 0; i < numberOfOptions; i++) {
+            int optionId = optionsArray.getResourceId(i, 0);
+            int radioButtonId = radioButtonsArray.getResourceId(i, 0);
+
+            if (optionId != 0)
+                questionOptions[i] = this.activity.findViewById(optionId);
+            else
+                Log.v(TAG, "optionId doesn't exist");
+
+            if (radioButtonId != 0)
+                questionButtons[i] = this.activity.findViewById(radioButtonId);
+            else
+                Log.v(TAG, "radioButtonId doesn't exist");
+        }
+
+        optionsArray.recycle();
+        radioButtonsArray.recycle();
     }
 
     public static int getNumberOfOptions() {

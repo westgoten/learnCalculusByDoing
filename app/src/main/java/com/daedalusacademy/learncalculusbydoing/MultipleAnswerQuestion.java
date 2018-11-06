@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
+import java.lang.reflect.Type;
+
 public class MultipleAnswerQuestion implements Question {
     private static final int numberOfOptions = 4;
     private static int numberOfQuestions = 0;
@@ -21,13 +23,6 @@ public class MultipleAnswerQuestion implements Question {
     private static CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
-    // TO DO: Move this IDs to arrays.xml resource
-    private static final int titleId = R.id.question_title;
-    private static final int[] optionsId = {R.id.question_op1, R.id.question_op2, R.id.question_op3,
-            R.id.question_op4};
-    private static final int[] buttonsId = {R.id.checkbox1, R.id.checkbox2, R.id.checkbox3,
-            R.id.checkbox4};
-
     private static final String TAG = "MultipleAnswerQuestion";
 
     public MultipleAnswerQuestion(Context context, boolean[] answer) {
@@ -37,12 +32,7 @@ public class MultipleAnswerQuestion implements Question {
         this.questionNumber = numberOfQuestions++;
 
         if (this.questionNumber == 0) {
-            questionTitle = this.activity.findViewById(titleId);
-
-            for (int i = 0; i < numberOfOptions; i++) {
-                questionOptions[i] = this.activity.findViewById(optionsId[i]);
-                questionButtons[i] = this.activity.findViewById(buttonsId[i]);
-            }
+            initializeViews();
         }
     }
 
@@ -126,6 +116,32 @@ public class MultipleAnswerQuestion implements Question {
 
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
+    }
+
+    private void initializeViews() {
+        questionTitle = this.activity.findViewById(R.id.question_title);
+
+        Resources resources = this.activity.getResources();
+        TypedArray optionsArray = resources.obtainTypedArray(R.array.options_views_IDs);
+        TypedArray checkBoxesArray = resources.obtainTypedArray(R.array.checkBoxes_IDs);
+
+        for (int i = 0; i < numberOfOptions; i++) {
+            int optionId = optionsArray.getResourceId(i, 0);
+            int checkBoxId = checkBoxesArray.getResourceId(i, 0);
+
+            if (optionId != 0)
+                questionOptions[i] = this.activity.findViewById(optionId);
+            else
+                Log.v(TAG, "optionId doesn't exist");
+
+            if (checkBoxId != 0)
+                questionButtons[i] = this.activity.findViewById(checkBoxId);
+            else
+                Log.v(TAG, "checkBoxId doesn't exist");
+        }
+
+        optionsArray.recycle();
+        checkBoxesArray.recycle();
     }
 
     public Activity getActivity() { return activity; }

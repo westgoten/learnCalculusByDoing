@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.EditText;
 import io.github.kexanie.library.MathView;
@@ -19,10 +20,6 @@ public class TextAnswerQuestion implements Question {
 
     private Drawable editTextBackground;
 
-    // TO DO: Move this IDs to arrays.xml resource
-    private static final int titleId = R.id.question_title;
-    private static final int editTextId = R.id.TAQ_edit_text;
-
     private static final String TAG = "TextAnswerQuestion";
 
     public TextAnswerQuestion(Context context, String answer) {
@@ -32,10 +29,10 @@ public class TextAnswerQuestion implements Question {
         this.questionNumber = numberOfQuestions++;
 
         if (this.questionNumber == 0) {
-            questionTitle = this.activity.findViewById(titleId);
+            questionTitle = this.activity.findViewById(R.id.question_title);
         }
 
-        editTextAnswer = this.activity.findViewById(editTextId);
+        editTextAnswer = this.activity.findViewById(R.id.TAQ_edit_text);
     }
 
     @Override
@@ -78,7 +75,11 @@ public class TextAnswerQuestion implements Question {
     @Override
     public void resetInputViewsState() {
         editTextAnswer.setText(null);
-        editTextAnswer.setBackground(this.editTextBackground);
+        if (Build.VERSION.SDK_INT >= 16)
+            editTextAnswer.setBackground(this.editTextBackground);
+        else
+            editTextAnswer.setBackgroundResource(R.color.noAnswer);
+
         editTextAnswer.setFocusableInTouchMode(true);
     }
 
@@ -108,13 +109,5 @@ public class TextAnswerQuestion implements Question {
 
     public String getAnswer() {
         return answer;
-    }
-
-    public static int getTitleId() {
-        return titleId;
-    }
-
-    public static int getEditTextId() {
-        return editTextId;
     }
 }
