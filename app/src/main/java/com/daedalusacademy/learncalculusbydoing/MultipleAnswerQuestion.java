@@ -10,8 +10,6 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
-import java.lang.reflect.Type;
-
 public class MultipleAnswerQuestion implements Question {
     private static final int numberOfOptions = 4;
     private static int numberOfQuestions = 0;

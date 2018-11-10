@@ -3,7 +3,9 @@ package com.daedalusacademy.learncalculusbydoing;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Fix unsolicited focus request to EditText view on TextAnswerQuestions
+        ScrollView scrollView = findViewById(R.id.scrollView);
+        scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
+        scrollView.setFocusableInTouchMode(true);
 
         globalQuestionNumber = 1;
         MultipleAnswerQuestion.resetNumberOfQuestions();
