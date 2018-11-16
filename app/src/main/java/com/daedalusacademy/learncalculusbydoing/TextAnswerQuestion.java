@@ -21,6 +21,7 @@ public class TextAnswerQuestion implements Question {
     private Drawable editTextBackground;
 
     private static final String TAG = "TextAnswerQuestion";
+    private static final long serialVersionUID = 3L;
 
     public TextAnswerQuestion(Context context, String answer) {
         this.activity = (Activity) context;

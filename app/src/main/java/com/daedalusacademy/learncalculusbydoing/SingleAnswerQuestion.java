@@ -23,6 +23,7 @@ public class SingleAnswerQuestion implements Question {
     private boolean[] answer;
 
     private static final String TAG = "SingleAnswerQuestion";
+    private static final long serialVersionUID = 2L;
 
     public SingleAnswerQuestion(Context context, boolean[] answer) {
         this.activity = (Activity) context;

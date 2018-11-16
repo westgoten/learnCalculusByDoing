@@ -1,6 +1,8 @@
 package com.daedalusacademy.learncalculusbydoing;
 
-public interface Question {
+import java.io.Serializable;
+
+public interface Question extends Serializable {
     void setViewsText();
     boolean isAnswerCorrect();
     void highlightAnswer();

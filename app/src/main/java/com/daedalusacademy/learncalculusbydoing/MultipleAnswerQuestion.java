@@ -22,6 +22,7 @@ public class MultipleAnswerQuestion implements Question {
     private boolean[] answer;
 
     private static final String TAG = "MultipleAnswerQuestion";
+    private static final long serialVersionUID = 1L;
 
     public MultipleAnswerQuestion(Context context, boolean[] answer) {
         this.activity = (Activity) context;

@@ -9,11 +9,14 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private static int score = 0;
-    private static int globalQuestionNumber;
-    private static final int questionsTotal = 10;
-    private static Question[] questionsList = new Question[questionsTotal];
+    private int mScore;
+    private int mGlobalQuestionNumber;
+    private Question[] mQuestionsList;
 
+    private static final String STATE_SCORE = "userScore";
+    private static final String STATE_QUESTION_NUMBER = "globalQuestionNumber";
+    private static final String STATE_QUESTION_LIST = "questionList";
+    private static final int QUESTIONS_TOTAL = 10;
     private static final String TAG = "MainActivity";
 
     @Override
@@ -21,27 +24,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mQuestionsList = new Question[QUESTIONS_TOTAL];
+
         // Fix unsolicited focus request to EditText view on TextAnswerQuestions
         ScrollView scrollView = findViewById(R.id.scrollView);
         scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         scrollView.setFocusableInTouchMode(true);
 
-        globalQuestionNumber = 1;
+        mGlobalQuestionNumber = 1;
         MultipleAnswerQuestion.resetNumberOfQuestions();
         SingleAnswerQuestion.resetNumberOfQuestions();
         TextAnswerQuestion.resetNumberOfQuestions();
 
         String[] questionsTypes = getResources().getStringArray(R.array.quiz_types);
-        for (int i = 0; i < questionsTotal; i++) {
+        for (int i = 0; i < QUESTIONS_TOTAL; i++) {
             switch (questionsTypes[i]) {
                 case "MAQ":
-                    questionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
+                    mQuestionsList[i] = new MultipleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "SAQ":
-                    questionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
+                    mQuestionsList[i] = new SingleAnswerQuestion(this, QuizAnswers.getObjectiveAnswer(i));
                     break;
                 case "TAQ":
-                    questionsList[i] = new TextAnswerQuestion(this, QuizAnswers.getTextAnswer(i));
+                    mQuestionsList[i] = new TextAnswerQuestion(this, QuizAnswers.getTextAnswer(i));
                     break;
             }
         }
@@ -59,25 +64,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Button button = (Button) v;
                 String currentButtonState = button.getText().toString();
-                Question currentQuestion = questionsList[globalQuestionNumber-1];
+                Question currentQuestion = mQuestionsList[mGlobalQuestionNumber - 1];
 
                 if (currentButtonState.equals(buttonStateList[0])) {
                     if (currentQuestion.hasUserInput()) {
                         if (currentQuestion.isAnswerCorrect())
-                            score++;
+                            mScore++;
                         currentQuestion.highlightAnswer();
-                        if (globalQuestionNumber < questionsTotal)
+                        if (mGlobalQuestionNumber < QUESTIONS_TOTAL)
                             button.setText(R.string.button_text_next);
                         else
                             button.setText(R.string.button_text_finish);
                     }
                 } else if (currentButtonState.equals(buttonStateList[1])) {
-                    globalQuestionNumber++;
+                    mGlobalQuestionNumber++;
                     setUpNextQuestionText();
                     currentQuestion.resetInputViewsState();
                     button.setText(R.string.button_text_submit);
                     currentQuestion.setInputViewsVisibility(false);
-                    questionsList[globalQuestionNumber-1].setInputViewsVisibility(true);
+                    mQuestionsList[mGlobalQuestionNumber - 1].setInputViewsVisibility(true);
                 } else if (currentButtonState.equals(buttonStateList[2])) {
                     // TO DO (Intent to EndScreen Activity)
                 }
@@ -87,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNextQuestionText() {
         TextView questionNumberTextView = findViewById(R.id.question_number);
-        questionNumberTextView.setText(getString(R.string.question_number, globalQuestionNumber));
+        questionNumberTextView.setText(getString(R.string.question_number, mGlobalQuestionNumber));
 
-        questionsList[globalQuestionNumber-1].setViewsText();
+        mQuestionsList[mGlobalQuestionNumber -1].setViewsText();
     }
 }
