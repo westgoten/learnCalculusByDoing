@@ -1,21 +1,22 @@
 package com.daedalusacademy.learncalculusbydoing;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import androidx.lifecycle.ViewModelProviders;
 
 public class MainActivity extends AppCompatActivity {
     private int mScore;
     private int mGlobalQuestionNumber;
     private Question[] mQuestionsList;
 
-    private static final String STATE_SCORE = "userScore";
-    private static final String STATE_QUESTION_NUMBER = "globalQuestionNumber";
-    private static final String STATE_QUESTION_LIST = "questionList";
+    //private static final String STATE_SCORE = "userScore";
+    //private static final String STATE_QUESTION_NUMBER = "globalQuestionNumber";
+    //private static final String STATE_QUESTION_LIST = "questionList";
     private static final int QUESTIONS_TOTAL = 10;
     private static final String TAG = "MainActivity";
 
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MainActivityViewModel viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
         mQuestionsList = new Question[QUESTIONS_TOTAL];
 
