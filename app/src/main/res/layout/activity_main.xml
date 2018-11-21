@@ -10,6 +10,7 @@
         android:layout_height="match_parent">
 
 <LinearLayout
+        android:id="@+id/quiz_content"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
             android:orientation="vertical">
 
         <LinearLayout
+                android:id="@+id/option1_view_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -71,6 +73,7 @@
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/option2_view_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -102,6 +105,7 @@
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/option3_view_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -133,6 +137,7 @@
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/option4_view_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"

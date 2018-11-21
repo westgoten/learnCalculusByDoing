@@ -3,8 +3,11 @@ package com.daedalusacademy.learncalculusbydoing;
 import androidx.lifecycle.ViewModel;
 
 public class MainActivityViewModel extends ViewModel {
-    private int score, questionNumber;
-    private Question[] questionsList;
+    private static final int QUESTIONS_TOTAL = 10;
+
+    private int score, questionNumber = 1;
+    private Question[] questionsList = new Question[QUESTIONS_TOTAL];
+    private String currentButtonState;
 
     public int getScore() {
         return score;
@@ -26,7 +29,11 @@ public class MainActivityViewModel extends ViewModel {
         return questionsList;
     }
 
-    public void setQuestionsList(Question[] questionsList) {
-        this.questionsList = questionsList;
+    public String getCurrentButtonState() {
+        return currentButtonState;
+    }
+
+    public void setCurrentButtonState(String currentButtonState) {
+        this.currentButtonState = currentButtonState;
     }
 }

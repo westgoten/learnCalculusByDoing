@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
-public class MultipleAnswerQuestion implements Question {
+public class MultipleAnswerQuestion implements ObjectiveQuestion {
     private static final int numberOfOptions = 4;
     private static int numberOfQuestions = 0;
 
@@ -21,18 +21,18 @@ public class MultipleAnswerQuestion implements Question {
     private static CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
+    private static boolean isContentViewVisible = true;
+    private static boolean areButtonsVisible = true;
+    private static boolean buttonsClickable = true;
+    private static int[] optionsBackground = {R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
+
     private static final String TAG = "MultipleAnswerQuestion";
-    private static final long serialVersionUID = 1L;
 
     public MultipleAnswerQuestion(Context context, boolean[] answer) {
         this.activity = (Activity) context;
         this.answer = answer;
 
         this.questionNumber = numberOfQuestions++;
-
-        if (this.questionNumber == 0) {
-            initializeViews();
-        }
     }
 
     @Override
@@ -68,13 +68,17 @@ public class MultipleAnswerQuestion implements Question {
     public void highlightAnswer() {
         for (int i = 0; i < numberOfOptions; i++) {
             if (questionButtons[i].isChecked() != this.answer[i]) {
+                optionsBackground[i] = R.color.wrongAnswer;
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
             } else {
+                optionsBackground[i] = R.color.correctAnswer;
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
             }
 
             questionButtons[i].setClickable(false);
         }
+
+        buttonsClickable = false;
     }
 
     @Override
@@ -88,18 +92,14 @@ public class MultipleAnswerQuestion implements Question {
 
     @Override
     public void setInputViewsVisibility(boolean isVisible) {
+        areButtonsVisible = isVisible;
+
         for (int i = 0; i < numberOfOptions; i++) {
             if (isVisible)
                 questionButtons[i].setVisibility(View.VISIBLE);
             else
                 questionButtons[i].setVisibility(View.GONE);
         }
-
-        LinearLayout parent = (LinearLayout) questionButtons[0].getParent().getParent();
-        if (isVisible)
-            parent.setVisibility(View.VISIBLE);
-        else
-            parent.setVisibility(View.GONE);
     }
 
     @Override
@@ -108,19 +108,33 @@ public class MultipleAnswerQuestion implements Question {
             if (questionButtons[i].isChecked())
                 questionButtons[i].setChecked(false);
 
+            optionsBackground[i] = R.color.noAnswer;
             ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
             questionButtons[i].setClickable(true);
         }
+
+        buttonsClickable = true;
+    }
+
+    @Override
+    public void setContentViewVisibility(boolean isVisible) {
+        isContentViewVisible = isVisible;
+
+        LinearLayout parent = (LinearLayout) questionButtons[0].getParent().getParent();
+        if (isVisible)
+            parent.setVisibility(View.VISIBLE);
+        else
+            parent.setVisibility(View.GONE);
     }
 
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
     }
 
-    private void initializeViews() {
-        questionTitle = this.activity.findViewById(R.id.question_title);
+    public static void initializeViews(Activity activity) {
+        questionTitle = activity.findViewById(R.id.question_title);
 
-        Resources resources = this.activity.getResources();
+        Resources resources = activity.getResources();
         TypedArray optionsArray = resources.obtainTypedArray(R.array.options_views_IDs);
         TypedArray checkBoxesArray = resources.obtainTypedArray(R.array.checkBoxes_IDs);
 
@@ -128,16 +142,29 @@ public class MultipleAnswerQuestion implements Question {
             int optionId = optionsArray.getResourceId(i, 0);
             int checkBoxId = checkBoxesArray.getResourceId(i, 0);
 
-            if (optionId != 0)
-                questionOptions[i] = this.activity.findViewById(optionId);
-            else
+            if (optionId != 0) {
+                questionOptions[i] = activity.findViewById(optionId);
+            } else
                 Log.v(TAG, "optionId doesn't exist");
 
-            if (checkBoxId != 0)
-                questionButtons[i] = this.activity.findViewById(checkBoxId);
-            else
+            if (checkBoxId != 0) {
+                questionButtons[i] = activity.findViewById(checkBoxId);
+                questionButtons[i].setClickable(buttonsClickable);
+                if (areButtonsVisible) {
+                    questionButtons[i].setVisibility(View.VISIBLE);
+                    ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(optionsBackground[i]);
+                } else
+                    questionButtons[i].setVisibility(View.GONE);
+            } else
                 Log.v(TAG, "checkBoxId doesn't exist");
         }
+
+        LinearLayout parent = (LinearLayout) questionButtons[0].getParent().getParent();
+        if (isContentViewVisible)
+            parent.setVisibility(View.VISIBLE);
+        else
+            parent.setVisibility(View.GONE);
+
 
         optionsArray.recycle();
         checkBoxesArray.recycle();

@@ -10,30 +10,28 @@ import android.widget.EditText;
 import io.github.kexanie.library.MathView;
 
 public class TextAnswerQuestion implements Question {
-    private static int numberOfQuestions = 0;
+    private static int numberOfQuestions;
 
     private int questionNumber;
     private Activity activity;
     private static MathView questionTitle;
-    private EditText editTextAnswer;
+    private static EditText editTextAnswer;
     private String answer;
 
-    private Drawable editTextBackground;
+    private static Drawable editTextBackground;
+
+    private static boolean isEditTextVisible = false;
+    private static boolean isEditTextFocusable = true;
+    private static boolean hasBackground = true;
+    private static int editTextBackgroundResource = R.color.noAnswer;
 
     private static final String TAG = "TextAnswerQuestion";
-    private static final long serialVersionUID = 3L;
 
     public TextAnswerQuestion(Context context, String answer) {
         this.activity = (Activity) context;
         this.answer = answer;
 
         this.questionNumber = numberOfQuestions++;
-
-        if (this.questionNumber == 0) {
-            questionTitle = this.activity.findViewById(R.id.question_title);
-        }
-
-        editTextAnswer = this.activity.findViewById(R.id.TAQ_edit_text);
     }
 
     @Override
@@ -50,14 +48,19 @@ public class TextAnswerQuestion implements Question {
 
     @Override
     public void highlightAnswer() {
-        this.editTextBackground = editTextAnswer.getBackground();
+        editTextBackground = editTextAnswer.getBackground();
+        hasBackground = false;
 
-        if (isAnswerCorrect())
+        if (isAnswerCorrect()) {
+            editTextBackgroundResource = R.color.correctAnswer;
             editTextAnswer.setBackgroundResource(R.color.correctAnswer);
-        else
+        } else {
+            editTextBackgroundResource = R.color.wrongAnswer;
             editTextAnswer.setBackgroundResource(R.color.wrongAnswer);
+        }
 
         editTextAnswer.setFocusable(false);
+        isEditTextFocusable = false;
     }
 
     @Override
@@ -67,6 +70,8 @@ public class TextAnswerQuestion implements Question {
 
     @Override
     public void setInputViewsVisibility(boolean isVisible) {
+        isEditTextVisible = isVisible;
+
         if (isVisible)
             editTextAnswer.setVisibility(View.VISIBLE);
         else
@@ -75,13 +80,42 @@ public class TextAnswerQuestion implements Question {
 
     @Override
     public void resetInputViewsState() {
+        hasBackground = true;
         editTextAnswer.setText(null);
-        if (Build.VERSION.SDK_INT >= 16)
-            editTextAnswer.setBackground(this.editTextBackground);
-        else
+        if (Build.VERSION.SDK_INT >= 16) {
+            editTextAnswer.setBackground(editTextBackground);
+        } else {
             editTextAnswer.setBackgroundResource(R.color.noAnswer);
+        }
 
         editTextAnswer.setFocusableInTouchMode(true);
+        isEditTextFocusable = true;
+    }
+
+    public static void initializeViews(Activity activity) {
+        questionTitle = activity.findViewById(R.id.question_title);
+        editTextAnswer = activity.findViewById(R.id.TAQ_edit_text);
+        if (numberOfQuestions == 0)
+            editTextBackground = editTextAnswer.getBackground();
+
+        if (isEditTextVisible)
+            editTextAnswer.setVisibility(View.VISIBLE);
+        else
+            editTextAnswer.setVisibility(View.GONE);
+
+        if (hasBackground) {
+            if (Build.VERSION.SDK_INT >= 16)
+                editTextAnswer.setBackground(editTextBackground);
+            else
+                editTextAnswer.setBackgroundResource(R.color.noAnswer);
+        } else {
+            editTextAnswer.setBackgroundResource(editTextBackgroundResource);
+        }
+
+        if (isEditTextFocusable)
+            editTextAnswer.setFocusableInTouchMode(true);
+        else
+            editTextAnswer.setFocusable(false);
     }
 
     public static void resetNumberOfQuestions() {
