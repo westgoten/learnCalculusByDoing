@@ -1,5 +1,6 @@
 package com.daedalusacademy.learncalculusbydoing;
 
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
 
     private static final int QUESTIONS_TOTAL = 10;
+    private static final String EXTRA_SCORE = "com.daedalusacademy.learncalculusbydoing.EXTRA_SCORE";
     private static final String TAG = "MainActivity";
 
     @Override
@@ -97,7 +99,11 @@ public class MainActivity extends AppCompatActivity {
                     if (nextQuestion instanceof ObjectiveQuestion)
                         ((ObjectiveQuestion) nextQuestion).setContentViewVisibility(true);
                 } else if (currentButtonState.equals(buttonStateList[2])) {
-                    // TO DO (Intent to EndScreen Activity)
+                    Intent resultIntent = new Intent();
+                    resultIntent.setClassName("com.daedalusacademy.learncalculusbydoing",
+                            "com.daedalusacademy.learncalculusbydoing.QuizResultActivity");
+                    resultIntent.putExtra(EXTRA_SCORE, viewModel.getScore());
+                    startActivity(resultIntent);
                 }
             }
         });

@@ -9,4 +9,8 @@
 
     <!-- TextAnswerQuestion -->
     <string name="TAQ_answer_hint">Answer</string>
+
+    <!-- QuizResultActivity -->
+    <string name="your_score">Your score:</string>
+    <string name="button_text_menu">Go back to menu</string>
 </resources>
