@@ -118,6 +118,13 @@ public class TextAnswerQuestion implements Question {
             editTextAnswer.setFocusable(false);
     }
 
+    public static void resetViews() {
+        isEditTextVisible = false;
+        isEditTextFocusable = true;
+        hasBackground = true;
+        editTextBackgroundResource = R.color.noAnswer;
+    }
+
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
     }

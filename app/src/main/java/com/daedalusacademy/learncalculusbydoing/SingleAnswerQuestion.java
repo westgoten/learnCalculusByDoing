@@ -189,6 +189,13 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
         radioButtonsArray.recycle();
     }
 
+    public static void resetViews() {
+        isContentViewVisible = true;
+        areButtonsVisible = false;
+        buttonsClickable = true;
+        optionsBackground = new int[]{R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
+    }
+
     public static int getNumberOfOptions() {
         return numberOfOptions;
     }

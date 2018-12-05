@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         SingleAnswerQuestion.setUpRadioButtons();
-        this.setUpNextQuestionText();
+        setUpNextQuestionText();
 
         final String[] buttonStateList = {getString(R.string.button_text_submit),
                 getString(R.string.button_text_next),
@@ -103,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
                     resultIntent.setClassName("com.daedalusacademy.learncalculusbydoing",
                             "com.daedalusacademy.learncalculusbydoing.QuizResultActivity");
                     resultIntent.putExtra(EXTRA_SCORE, viewModel.getScore());
+                    resetViews();
                     startActivity(resultIntent);
+                    finish();
                 }
             }
         });
@@ -120,6 +122,12 @@ public class MainActivity extends AppCompatActivity {
         MultipleAnswerQuestion.initializeViews(this);
         SingleAnswerQuestion.initializeViews(this);
         TextAnswerQuestion.initializeViews(this);
+    }
+
+    private void resetViews() {
+        MultipleAnswerQuestion.resetViews();
+        SingleAnswerQuestion.resetViews();
+        TextAnswerQuestion.resetViews();
     }
 
     private void resetNumberOfQuestions() {

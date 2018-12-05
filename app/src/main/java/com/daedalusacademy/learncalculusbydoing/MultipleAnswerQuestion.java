@@ -170,6 +170,13 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
         checkBoxesArray.recycle();
     }
 
+    public static void resetViews() {
+        isContentViewVisible = true;
+        areButtonsVisible = true;
+        buttonsClickable = true;
+        optionsBackground = new int[]{R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
+    }
+
     public Activity getActivity() { return activity; }
 
     public MathView getQuestionTitle() {

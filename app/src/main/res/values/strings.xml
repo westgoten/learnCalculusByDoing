@@ -13,4 +13,8 @@
     <!-- QuizResultActivity -->
     <string name="your_score">Your score:</string>
     <string name="button_text_menu">Go back to menu</string>
+
+    <!-- MenuActivity -->
+    <string name="menu_title_text">Calculus Quiz</string>
+    <string name="button_text_start">Start</string>
 </resources>

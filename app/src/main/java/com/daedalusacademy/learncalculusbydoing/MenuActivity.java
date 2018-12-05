@@ -4,31 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class QuizResultActivity extends AppCompatActivity {
-    private static final String EXTRA_SCORE = "com.daedalusacademy.learncalculusbydoing.EXTRA_SCORE";
+public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_result);
+        setContentView(R.layout.activity_menu);
 
-        Intent resultIntent = getIntent();
-        int score = resultIntent.getIntExtra(EXTRA_SCORE, 0);
-
-        TextView scoreView = findViewById(R.id.result_score_text_view);
-        scoreView.setText(String.valueOf(score));
-
-        Button button = findViewById(R.id.result_to_menu_button);
+        Button button = findViewById(R.id.menu_start_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClassName("com.daedalusacademy.learncalculusbydoing",
-                        "com.daedalusacademy.learncalculusbydoing.MenuActivity");
+                        "com.daedalusacademy.learncalculusbydoing.MainActivity");
                 startActivity(intent);
                 finish();
             }

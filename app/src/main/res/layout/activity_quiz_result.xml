@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    android:id="@+id/root_scroll_view"
+    android:id="@+id/result_root_scroll_view"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/main_linear_layout"
-        android:layout_width="wrap_content"
+        android:id="@+id/result_main_linear_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/your_score_view"
+            android:id="@+id/result_your_score_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -21,7 +21,7 @@
             android:layout_marginBottom="16dp"/>
 
         <TextView
-            android:id="@+id/score_view"
+            android:id="@+id/result_score_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -29,7 +29,7 @@
             android:layout_marginBottom="32dp"/>
 
         <Button
-            android:id="@+id/button_view_menu"
+            android:id="@+id/result_to_menu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
