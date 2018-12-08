@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             clickButton.setText(viewModel.getCurrentButtonState());
         }
 
-        SingleAnswerQuestion.setUpRadioButtons();
+        SingleAnswerQuestion.setUpRadioButtons(this);
         setUpNextQuestionText();
 
         final String[] buttonStateList = {getString(R.string.button_text_submit),

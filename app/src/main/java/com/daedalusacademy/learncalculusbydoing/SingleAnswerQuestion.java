@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -130,17 +131,21 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
             parent.setVisibility(View.GONE);
     }
 
-    public static void setUpRadioButtons() {
+    public static void setUpRadioButtons(Activity activity) {
         for (int i = 0; i < numberOfOptions; i++) {
             questionButtons[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     RadioButton radioButton = (RadioButton) buttonView;
+                    Button button = activity.findViewById(R.id.button);
                     if (isChecked) {
                         for (int i = 0; i < numberOfOptions; i++) {
                             if (questionButtons[i] != radioButton && questionButtons[i].isChecked())
                                 questionButtons[i].setChecked(false);
                         }
+
+                        if (!button.isEnabled())
+                            button.setEnabled(true);
                     }
                 }
             });
