@@ -9,6 +9,8 @@
   <color name="primaryTextColor">#000000</color>
   <color name="secondaryTextColor">#ffffff</color>
 
+  <color name="disabled_button_color">#eeeeee</color>
+
     <!-- Objective Questions Answer -->
     <color name="correctAnswer">#33cc33</color>
     <color name="wrongAnswer">#cc0000</color>

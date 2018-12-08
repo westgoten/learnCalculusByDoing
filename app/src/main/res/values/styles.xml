@@ -6,6 +6,14 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
+        <item name="buttonStyle">@style/myButtonStyle</item>
+    </style>
+
+    <style name="myButtonStyle">
+        <item name="android:background">@drawable/my_button_state_list</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
     </style>
 
 </resources>
