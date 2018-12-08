@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     viewModel.setQuestionNumber(viewModel.getQuestionNumber() + 1);
                     setUpNextQuestionText();
                     button.setText(R.string.button_text_submit);
+                    button.setEnabled(false);
                     viewModel.setCurrentButtonState(getString(R.string.button_text_submit));
 
                     currentQuestion.resetInputViewsState();

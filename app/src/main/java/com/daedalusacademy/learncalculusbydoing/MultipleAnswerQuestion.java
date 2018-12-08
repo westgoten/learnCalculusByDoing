@@ -6,7 +6,9 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import io.github.kexanie.library.MathView;
 
@@ -150,6 +152,7 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
             if (checkBoxId != 0) {
                 questionButtons[i] = activity.findViewById(checkBoxId);
                 questionButtons[i].setClickable(buttonsClickable);
+
                 if (areButtonsVisible) {
                     questionButtons[i].setVisibility(View.VISIBLE);
                     ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(optionsBackground[i]);
@@ -165,6 +168,26 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
         else
             parent.setVisibility(View.GONE);
 
+        for (CheckBox checkBox : questionButtons) {
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        Button button = activity.findViewById(R.id.button);
+                        if (!button.isEnabled())
+                            button.setEnabled(true);
+                    } else {
+                        int checkedBoxes = 0;
+                        for (CheckBox checkBox1 : questionButtons)
+                            if (checkBox1.isChecked())
+                                checkedBoxes++;
+
+                        if (checkedBoxes == 0)
+                            activity.findViewById(R.id.button).setEnabled(false);
+                    }
+                }
+            });
+        }
 
         optionsArray.recycle();
         checkBoxesArray.recycle();
