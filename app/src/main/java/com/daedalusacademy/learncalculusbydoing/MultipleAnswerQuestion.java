@@ -174,16 +174,18 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         Button button = activity.findViewById(R.id.button);
-                        if (!button.isEnabled())
+                        if (!button.isEnabled()) {
                             button.setEnabled(true);
+                        }
                     } else {
                         int checkedBoxes = 0;
                         for (CheckBox checkBox1 : questionButtons)
                             if (checkBox1.isChecked())
                                 checkedBoxes++;
 
-                        if (checkedBoxes == 0)
+                        if (checkedBoxes == 0) {
                             activity.findViewById(R.id.button).setEnabled(false);
+                        }
                     }
                 }
             });

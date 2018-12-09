@@ -144,8 +144,9 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
                                 questionButtons[i].setChecked(false);
                         }
 
-                        if (!button.isEnabled())
+                        if (!button.isEnabled()) {
                             button.setEnabled(true);
+                        }
                     }
                 }
             });

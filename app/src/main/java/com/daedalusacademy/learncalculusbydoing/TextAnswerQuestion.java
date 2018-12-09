@@ -134,10 +134,13 @@ public class TextAnswerQuestion implements Question {
             @Override
             public void afterTextChanged(Editable s) {
                 Button button = activity.findViewById(R.id.button);
-                if (s.length() > 0 && !button.isEnabled())
-                    button.setEnabled(true);
-                else if (s.length() == 0 && button.isEnabled())
-                    button.setEnabled(false);
+                if (editTextAnswer.getVisibility() == View.VISIBLE) {
+                    if (s.length() > 0 && !button.isEnabled()) {
+                        button.setEnabled(true);
+                    } else if (s.length() == 0 && button.isEnabled()) {
+                        button.setEnabled(false);
+                    }
+                }
             }
         });
     }
