@@ -12,8 +12,8 @@
   <color name="disabled_button_color">#eeeeee</color>
 
     <!-- Objective Questions Answer -->
-    <color name="correctAnswer">#33cc33</color>
-    <color name="wrongAnswer">#cc0000</color>
+    <color name="correctAnswer">#4c21ff00</color>
+    <color name="wrongAnswer">#4cff2e00</color>
     <color name="noAnswer">@android:color/transparent</color>
     <color name="selected">#140000ce</color>
 </resources>
