@@ -172,10 +172,17 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    LinearLayout parent = (LinearLayout) buttonView.getParent();
+                    int buttonIndex = findButtonIndexInArray(buttonView);
                     if (isChecked) {
                         Button button = activity.findViewById(R.id.button);
                         if (!button.isEnabled()) {
                             button.setEnabled(true);
+                        }
+
+                        if (optionsBackground[buttonIndex] == R.color.noAnswer) {
+                            parent.setBackgroundResource(R.color.selected);
+                            optionsBackground[buttonIndex] = R.color.selected;
                         }
                     } else {
                         int checkedBoxes = 0;
@@ -185,6 +192,11 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
 
                         if (checkedBoxes == 0) {
                             activity.findViewById(R.id.button).setEnabled(false);
+                        }
+
+                        if (optionsBackground[buttonIndex] == R.color.selected) {
+                            parent.setBackgroundResource(R.color.noAnswer);
+                            optionsBackground[buttonIndex] = R.color.noAnswer;
                         }
                     }
                 }
@@ -200,6 +212,15 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
         areButtonsVisible = true;
         buttonsClickable = true;
         optionsBackground = new int[]{R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
+    }
+
+    private static int findButtonIndexInArray(CompoundButton button) {
+        int i;
+        for (i = 0; i < numberOfOptions; i++)
+            if (questionButtons[i] == button)
+                return i;
+
+        return -1;
     }
 
     public Activity getActivity() { return activity; }

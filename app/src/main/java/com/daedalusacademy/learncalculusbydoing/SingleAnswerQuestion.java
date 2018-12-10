@@ -137,6 +137,9 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     RadioButton radioButton = (RadioButton) buttonView;
+                    LinearLayout parent = (LinearLayout) radioButton.getParent();
+                    int buttonIndex = findButtonIndexInArray(radioButton);
+
                     Button button = activity.findViewById(R.id.button);
                     if (isChecked) {
                         for (int i = 0; i < numberOfOptions; i++) {
@@ -146,6 +149,16 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
 
                         if (!button.isEnabled()) {
                             button.setEnabled(true);
+                        }
+
+                        if (optionsBackground[buttonIndex] == R.color.noAnswer) {
+                            parent.setBackgroundResource(R.color.selected);
+                            optionsBackground[buttonIndex] = R.color.selected;
+                        }
+                    } else {
+                        if (optionsBackground[buttonIndex] == R.color.selected) {
+                            parent.setBackgroundResource(R.color.noAnswer);
+                            optionsBackground[buttonIndex] = R.color.noAnswer;
                         }
                     }
                 }
@@ -200,6 +213,15 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
         areButtonsVisible = false;
         buttonsClickable = true;
         optionsBackground = new int[]{R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
+    }
+
+    private static int findButtonIndexInArray(CompoundButton button) {
+        int i;
+        for (i = 0; i < numberOfOptions; i++)
+            if (questionButtons[i] == button)
+                return i;
+
+        return -1;
     }
 
     public static int getNumberOfOptions() {
