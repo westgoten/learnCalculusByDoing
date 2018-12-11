@@ -1,19 +1,19 @@
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-  <color name="primaryColor">#00cece</color>
-  <color name="primaryLightColor">#64ffff</color>
-  <color name="primaryDarkColor">#009c9d</color>
-  <color name="secondaryColor">#0000ce</color>
-  <color name="secondaryLightColor">#643aff</color>
-  <color name="secondaryDarkColor">#00009b</color>
-  <color name="primaryTextColor">#000000</color>
-  <color name="secondaryTextColor">#ffffff</color>
+    <color name="primaryColor">#00cece</color>
+    <color name="primaryLightColor">#64ffff</color>
+    <color name="primaryDarkColor">#009c9d</color>
+    <color name="secondaryColor">#0000ce</color>
+    <color name="secondaryLightColor">#643aff</color>
+    <color name="secondaryDarkColor">#00009b</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
-  <color name="disabled_button_color">#eeeeee</color>
+    <color name="disabled_button_color">#eeeeee</color>
 
     <!-- Objective Questions Answer -->
-    <color name="correctAnswer">#4c21ff00</color>
-    <color name="wrongAnswer">#4cff2e00</color>
+    <color name="correctAnswer">#4c21ff00</color> <!-- 30% opacity -->
+    <color name="wrongAnswer">#4cff2e00</color> <!-- 30% opacity -->
     <color name="noAnswer">@android:color/transparent</color>
-    <color name="selected">#140000ce</color>
+    <color name="selected">#140000ce</color> <!-- 8% opacity -->
 </resources>

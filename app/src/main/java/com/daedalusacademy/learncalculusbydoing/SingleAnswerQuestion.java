@@ -79,6 +79,7 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
             }
 
             questionButtons[i].setClickable(false);
+            ((LinearLayout) questionButtons[i].getParent()).setClickable(false);
         }
 
         buttonsClickable = false;
@@ -115,6 +116,7 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
             optionsBackground[i] = R.color.noAnswer;
             ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
             questionButtons[i].setClickable(true);
+            ((LinearLayout) questionButtons[i].getParent()).setClickable(true);
         }
 
         buttonsClickable = true;
@@ -181,9 +183,9 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
             int optionId = optionsArray.getResourceId(i, 0);
             int radioButtonId = radioButtonsArray.getResourceId(i, 0);
 
-            if (optionId != 0)
+            if (optionId != 0) {
                 questionOptions[i] = activity.findViewById(optionId);
-            else
+            } else
                 Log.v(TAG, "optionId doesn't exist");
 
             if (radioButtonId != 0) {

@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:text="@string/menu_title_text"
             android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
             android:textSize="34sp"
+            android:textColor="@android:color/black"
             android:layout_marginBottom="40dp"/>
 
         <Button

@@ -78,6 +78,7 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
             }
 
             questionButtons[i].setClickable(false);
+            ((LinearLayout) questionButtons[i].getParent()).setClickable(false);
         }
 
         buttonsClickable = false;
@@ -113,6 +114,7 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
             optionsBackground[i] = R.color.noAnswer;
             ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.noAnswer);
             questionButtons[i].setClickable(true);
+            ((LinearLayout) questionButtons[i].getParent()).setClickable(true);
         }
 
         buttonsClickable = true;
@@ -146,6 +148,24 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
 
             if (optionId != 0) {
                 questionOptions[i] = activity.findViewById(optionId);
+                /*
+                 * TO DO: Adapt this code to a MainActivity's method that it's able to handle
+                 * MAQs and SAQs buttons.
+                 *
+                LinearLayout parent = (LinearLayout) questionOptions[i].getParent();
+                parent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        LinearLayout parent = (LinearLayout) v;
+                        CheckBox button = (CheckBox) parent.getChildAt(0);
+                        if (button.isChecked())
+                            button.setChecked(false);
+                        else
+                            button.setChecked(true);
+                    }
+                });
+                parent.setClickable(buttonsClickable);
+                */
             } else
                 Log.v(TAG, "optionId doesn't exist");
 
