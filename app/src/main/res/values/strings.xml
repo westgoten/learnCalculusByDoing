@@ -12,6 +12,7 @@
 
     <!-- QuizResultActivity -->
     <string name="your_score">Your score:</string>
+    <string name="score">%d of %d</string>
     <string name="button_text_menu">GO BACK TO MENU</string>
 
     <!-- MenuActivity -->

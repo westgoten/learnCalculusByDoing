@@ -5,15 +5,16 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorAccent">@color/secondaryColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
         <item name="buttonStyle">@style/myButtonStyle</item>
     </style>
 
     <style name="myButtonStyle">
         <item name="android:background">@drawable/my_button_state_list</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Button</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">100dp</item>
     </style>
-
 </resources>

@@ -15,5 +15,5 @@
     <color name="correctAnswer">#4c21ff00</color> <!-- 30% opacity -->
     <color name="wrongAnswer">#4cff2e00</color> <!-- 30% opacity -->
     <color name="noAnswer">@android:color/transparent</color>
-    <color name="selected">#140000ce</color> <!-- 8% opacity -->
+    <color name="selected">#1400cece</color> <!-- 8% opacity -->
 </resources>
