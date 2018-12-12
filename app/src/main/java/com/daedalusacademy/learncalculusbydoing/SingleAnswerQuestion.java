@@ -253,4 +253,8 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
     public boolean[] getAnswer() {
         return answer;
     }
+
+    public static boolean isButtonsClickable() {
+        return buttonsClickable;
+    }
 }

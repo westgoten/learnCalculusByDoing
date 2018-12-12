@@ -1,14 +1,13 @@
 package com.daedalusacademy.learncalculusbydoing;
 
 import android.content.Intent;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import androidx.lifecycle.ViewModelProviders;
+import io.github.kexanie.library.MathView;
 
 public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
@@ -123,6 +122,36 @@ public class MainActivity extends AppCompatActivity {
         MultipleAnswerQuestion.initializeViews(this);
         SingleAnswerQuestion.initializeViews(this);
         TextAnswerQuestion.initializeViews(this);
+
+        // Set up interactive text on ObjectiveQuestions' options
+        for (MathView mathView : MultipleAnswerQuestion.getQuestionOptions()) {
+            LinearLayout parent = (LinearLayout) mathView.getParent();
+            parent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LinearLayout parent = (LinearLayout) v;
+                    Question currentQuestion = viewModel.getQuestionsList()[viewModel.getQuestionNumber() - 1];
+                    if (currentQuestion instanceof MultipleAnswerQuestion) {
+                        CheckBox checkBox = (CheckBox) parent.getChildAt(0);
+                        if (checkBox.isChecked())
+                            checkBox.setChecked(false);
+                        else
+                            checkBox.setChecked(true);
+                    } else if (currentQuestion instanceof SingleAnswerQuestion) {
+                        RadioButton radioButton = (RadioButton) parent.getChildAt(1);
+                        if (!radioButton.isChecked())
+                            radioButton.setChecked(true);
+                    }
+                }
+            });
+
+            // Fix state change of the LinearLayout caused by setOnClickListener() method
+            Question currentQuestion = viewModel.getQuestionsList()[viewModel.getQuestionNumber() - 1];
+            if (currentQuestion instanceof MultipleAnswerQuestion)
+                parent.setClickable(MultipleAnswerQuestion.isButtonsClickable());
+            else if (currentQuestion instanceof  SingleAnswerQuestion)
+                parent.setClickable(SingleAnswerQuestion.isButtonsClickable());
+        }
     }
 
     private void resetViews() {
