@@ -24,8 +24,9 @@ public class QuizResultActivity extends AppCompatActivity {
         int score = resultIntent.getIntExtra(EXTRA_SCORE, 0);
 
         TextView scoreView = findViewById(R.id.result_score_text_view);
-        SpannableString string = new SpannableString(String.format(getString(R.string.score), score, 10));
-        string.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.primaryColor)), 0, 1,
+        SpannableString string = new SpannableString(getString(R.string.score, score, QuizActivity
+                .getQuestionsTotal()));
+        string.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.primaryColor)), 0, 2,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         scoreView.setText(string);
 

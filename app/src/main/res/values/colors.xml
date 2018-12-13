@@ -1,11 +1,11 @@
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <resources>
-    <color name="primaryColor">#00cece</color>
-    <color name="primaryLightColor">#64ffff</color>
-    <color name="primaryDarkColor">#009c9d</color>
-    <color name="secondaryColor">#0000ce</color>
-    <color name="secondaryLightColor">#643aff</color>
-    <color name="secondaryDarkColor">#00009b</color>
+    <color name="primaryColor">#006dce</color>
+    <color name="primaryLightColor">#5c9bff</color>
+    <color name="primaryDarkColor">#00439c</color>
+    <color name="secondaryColor">#00cece</color>
+    <color name="secondaryLightColor">#64ffff</color>
+    <color name="secondaryDarkColor">#009c9d</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#ffffff</color>
 
@@ -15,5 +15,5 @@
     <color name="correctAnswer">#4c21ff00</color> <!-- 30% opacity -->
     <color name="wrongAnswer">#4cff2e00</color> <!-- 30% opacity -->
     <color name="noAnswer">@android:color/transparent</color>
-    <color name="selected">#1400cece</color> <!-- 8% opacity -->
+    <color name="selected">#14006dce</color> <!-- 8% opacity -->
 </resources>

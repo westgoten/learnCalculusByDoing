@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aprenda Cálculo na Prática</string>
+    <string name="question_number">Questão %d/%d</string>
+    <string name="button_text_submit">CONFIRMAR</string>
+    <string name="button_text_next">AVANÇAR</string>
+    <string name="button_text_finish">TERMINAR</string>
+    <string name="TAQ_answer_hint">Resposta</string>
+    <string name="your_score">Sua pontuação:</string>
+    <string name="score">%d de %d</string>
+    <string name="button_text_menu">VOLTAR AO MENU</string>
+    <string name="menu_title_text">Cálculo Quiz</string>
+    <string name="button_text_start">INICIAR</string>
+    <string name="question2_title">Em qual(is) das alternativas abaixo há continuidade?</string>
+    <string name="question3_title">Qual(is) dos limites abaixo é/são assíntota(s) horizontal(is)?</string>
+    <string name="question4_title">Em qual(is) das alternativas abaixo o limite existe?</string>
+    <string name="question5_title">Resolver uma derivada por definição é um processo de várias etapas. Qual das opções abaixo é a segunda etapa da derivada de \\(f(x) = x^2 - 3x\\)?</string>
+    <string name="question6_title">Qual é a equação da reta normal à curva \\(f(x) = 2x^2+3x\\) no ponto \\(x = 2\\)?</string>
+    <string name="question7_title">Quanto é \\(f\'\'(2)\\) para \\(f(x) = \\ln (1+x^2)\\)?</string>
+    <string name="question1_title">Em qual(is) das alternativas abaixo o limite existe?</string>
+    <string name="question8_title">A derivada da função \\(x^2+y^2=4\\) na forma implícita é \\(\\frac{-x}{a}\\). Qual é o valor de \\(a\\)?</string>
+    <string name="question9_title">Resolvendo o limite \\(\\lim\\limits_{x \\to +\\infty} (1 - \\frac{1}{x})^{2x}\\), nós obtemos \\(\\frac{1}{e^a}\\). Qual é o valor de \\(a\\)?</string>
+    <string name="question10_title">Um recipiente cilíndrico fechado, em que a altura é o triplo do raio, está aumentando de tamanho, provocando uma variação no raio \ndo mesmo em função do tempo de acordo com a expressão \\(r = \\frac{t^2}{3} + 2t\\), o raio dado em centímetros. Ao determinar a taxa \nde variação da área total do cilíndro em função do tempo, no instante \\(t = 2s\\), encontramos o valor \\(A\'(2) = \\frac{2560\\pi}{a}\\space cm^2/s\\). \nQual é o valor de \\(a\\)?</string>
+</resources>

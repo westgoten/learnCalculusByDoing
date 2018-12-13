@@ -14,7 +14,7 @@
         <item>TAQ</item>
     </string-array>
 
-    <!-- Question options views IDs -->
+    <!-- Question options' views IDs -->
     <array name="options_views_IDs">
         <item>@id/question_op1</item>
         <item>@id/question_op2</item>
@@ -40,7 +40,7 @@
 
     <!-- Question 1 -->
     <string-array name="MAQ_stringArray1">
-        <item>In which of the alternatives below does the limit exist?</item>
+        <item>@string/question1_title</item>
         <item>\\(\\lim\\limits_{x \\to 3^+} f(x) = 1\\) ; \\(\\lim\\limits_{x \\to 3^-} f(x) = 3\\)</item>
         <item>\\(\\lim\\limits_{x \\to 2^+} g(x) = 2\\) ; \\(\\lim\\limits_{x \\to 2^-} g(x) = 4\\)</item>
         <item>\\(\\lim\\limits_{x \\to 1^+} h(x) = 7\\) ; \\(\\lim\\limits_{x \\to 1^-} h(x) = 7\\)</item>
@@ -49,7 +49,7 @@
 
     <!-- Question 2 -->
     <string-array name="MAQ_stringArray2">
-        <item>In which of the alternatives below does continuity exist?</item>
+        <item>@string/question2_title</item>
         <item>\\(\\lim\\limits_{x \\to 2} f(x) = 2\\space;\\space f(2) = 7\\)</item>
         <item>\\(\\lim\\limits_{x \\to 4} f(x) = 11\\space;\\space f(4) = 11\\)</item>
         <item>\\(\\lim\\limits_{x \\to 7} f(x) = 3\\space;\\space f(7) = 6\\)</item>
@@ -58,7 +58,7 @@
 
     <!-- Question 3 -->
     <string-array name="MAQ_stringArray3">
-        <item>Which of the limits below is/are horizontal asymptote(s)?</item>
+        <item>@string/question3_title</item>
         <item>\\(\\lim\\limits_{x \\to +\\infty} \\space \\dfrac{2x+1}{x}\\)</item>
         <item>\\(\\lim\\limits_{x \\to -\\infty} \\space \\dfrac{4x^3-2x+1}{2x^4}\\)</item>
         <item>\\(\\lim\\limits_{x \\to -\\infty} \\space \\dfrac{x+3}{2x}\\)</item>
@@ -67,7 +67,7 @@
 
     <!-- Question 4 -->
     <string-array name="MAQ_stringArray4">
-        <item>In which of the alternatives below does the limit exist?</item>
+        <item>@string/question4_title</item>
         <item>\\(\\lim\\limits_{x \\to 0^+} \\space \\dfrac{\\sqrt{x}-1}{x^2}\\)</item>
         <item>\\(\\lim\\limits_{x \\to 0} \\space \\dfrac{x^2+1}{\\sin x}\\)</item>
         <item>\\(\\lim\\limits_{x \\to 2} \\space \\dfrac{5x-4}{x^2-4}\\)</item>
@@ -84,8 +84,7 @@
 
     <!-- Question 5 -->
     <string-array name="SAQ_stringArray1">
-        <item>Solving a derivative by definition is a process of several steps. Which of the options
-        below is the second step of the derivative of \\(f(x) = x^2 - 3x\\)?</item>
+        <item>@string/question5_title</item>
         <item>\\(f\'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)+2(x+\\Delta x)+x^2+3x}{\\Delta x}\\)</item>
         <item>\\(f\'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)^2-3(x+\\Delta x)+x^2+3x}{\\Delta x}\\)</item>
         <item>\\(f\'(x) = \\lim\\limits_{\\Delta x \\to 0} \\frac{(x+\\Delta x)-2(x+\\Delta x)+x^2+3x}{\\Delta x}\\)</item>
@@ -94,7 +93,7 @@
 
     <!-- Question 6 -->
     <string-array name="SAQ_stringArray2">
-        <item>What is the equation of the normal line to the curve \\(f(x) = 2x^2+3x\\) at the point \\(x = 2\\)?</item>
+        <item>@string/question6_title</item>
         <item>\\(y = 4x+3\\)</item>
         <item>\\(y = \\dfrac{2x-13}{47}\\)</item>
         <item>\\(y = \\dfrac{-x+156}{11}\\)</item>
@@ -103,7 +102,7 @@
 
     <!-- Question 7 -->
     <string-array name="SAQ_stringArray3">
-        <item>What is \\(f\'\'(2)\\) for \\(f(x) = \\ln (1+x^2)\\)?</item>
+        <item>@string/question7_title</item>
         <item>\\(\\dfrac{-7x}{8}\\)</item>
         <item>\\(27\\)</item>
         <item>\\(\\dfrac{2x}{1+x^2}\\)</item>
@@ -120,14 +119,8 @@
     <!-- Questions 8, 9 and 10 -->
     <!-- TextAnswerQuestion StringArray -->
     <string-array name="TAQ_stringArray">
-        <item>The derivative of the function \\(x^2+y^2=4\\) in the implicit form is \\(\\frac{-x}{a}\\).
-        What is the value of \\(a\\)?</item>
-        <item>Solving the limit \\(\\lim\\limits_{x \\to +\\infty} (1 - \\frac{1}{x})^{2x}\\), we obtain
-        \\(\\frac{1}{e^a}\\). What is the value of \\(a\\)?</item>
-        <item>A closed cylindrical vessel, in which the height is three times the radius, is increasing
-            in size, causing a change in the radius as a function of time according to the expression
-            \\(r = \\frac{t^2}{3} + 2t\\), the radius given in centimeters.\n\n When determining the rate of change of the total
-            area of the cylinder as a function of time at \\(t = 2s\\), we find the value \\(A\'(2) = \\frac{2560\\pi}{a}\\space cm^2/s\\).
-            What is the value of \\(a\\)?</item>
+        <item>@string/question8_title</item>
+        <item>@string/question9_title</item>
+        <item>@string/question10_title</item>
     </string-array>
 </resources>

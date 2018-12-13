@@ -9,19 +9,22 @@ import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProviders;
 import io.github.kexanie.library.MathView;
 
-public class MainActivity extends AppCompatActivity {
-    private MainActivityViewModel viewModel;
+public class QuizActivity extends AppCompatActivity {
+    private QuizActivityViewModel viewModel;
 
     private static final int QUESTIONS_TOTAL = 10;
     private static final String EXTRA_SCORE = "com.daedalusacademy.learncalculusbydoing.EXTRA_SCORE";
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "QuizActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_quiz);
 
-        viewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(QuizActivityViewModel.class);
+
+        if (savedInstanceState == null)
+            resetViews();
 
         initializeViews();
 
@@ -103,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                     resultIntent.setClassName("com.daedalusacademy.learncalculusbydoing",
                             "com.daedalusacademy.learncalculusbydoing.QuizResultActivity");
                     resultIntent.putExtra(EXTRA_SCORE, viewModel.getScore());
-                    resetViews();
                     startActivity(resultIntent);
                     finish();
                 }
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNextQuestionText() {
         TextView questionNumberTextView = findViewById(R.id.question_number);
-        questionNumberTextView.setText(getString(R.string.question_number, viewModel.getQuestionNumber()));
+        questionNumberTextView.setText(getString(R.string.question_number, viewModel.getQuestionNumber(), QUESTIONS_TOTAL));
 
         viewModel.getQuestionsList()[viewModel.getQuestionNumber()-1].setViewsText();
     }
@@ -164,5 +166,9 @@ public class MainActivity extends AppCompatActivity {
         MultipleAnswerQuestion.resetNumberOfQuestions();
         SingleAnswerQuestion.resetNumberOfQuestions();
         TextAnswerQuestion.resetNumberOfQuestions();
+    }
+
+    public static int getQuestionsTotal() {
+        return QUESTIONS_TOTAL;
     }
 }

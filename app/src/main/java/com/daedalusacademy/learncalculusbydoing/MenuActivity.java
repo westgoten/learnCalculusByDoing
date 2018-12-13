@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClassName("com.daedalusacademy.learncalculusbydoing",
-                        "com.daedalusacademy.learncalculusbydoing.MainActivity");
+                        "com.daedalusacademy.learncalculusbydoing.QuizActivity");
                 startActivity(intent);
                 finish();
             }

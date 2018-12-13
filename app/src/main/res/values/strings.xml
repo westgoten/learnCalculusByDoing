@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Learn Calculus by Doing</string>
-    <string name="question_number">Question %d/10</string>
+    <string name="question_number">Question %d/%d</string>
 
     <!-- Button -->
-    <string name="button_text_submit">SUBMIT</string>
     <string name="button_text_next">NEXT</string>
     <string name="button_text_finish">FINISH</string>
 
@@ -18,4 +17,21 @@
     <!-- MenuActivity -->
     <string name="menu_title_text">Calculus Quiz</string>
     <string name="button_text_start">START</string>
+
+    <!-- Questions -->
+    <string name="question1_title">In which of the alternatives below does the limit exist?</string>
+    <string name="question2_title">In which of the alternatives below does continuity exist?</string>
+    <string name="question3_title">Which of the limits below is/are horizontal asymptote(s)?</string>
+    <string name="question4_title">In which of the alternatives below does the limit exist?</string>
+    <string name="question5_title">Solving a derivative by definition is a process of several steps. Which of the options         below is the second step of the derivative of \\(f(x) = x^2 - 3x\\)?</string>
+    <string name="question6_title">What is the equation of the normal line to the curve \\(f(x) = 2x^2+3x\\) at the         point \\(x = 2\\)?</string>
+    <string name="question7_title">What is \\(f\'\'(2)\\) for \\(f(x) = \\ln (1+x^2)\\)?</string>
+    <string name="question8_title">The derivative of the function \\(x^2+y^2=4\\) in the implicit form is         \\(\\frac{-x}{a}\\). What is the value of \\(a\\)?</string>
+    <string name="question9_title">Solving the limit \\(\\lim\\limits_{x \\to +\\infty} (1 - \\frac{1}{x})^{2x}\\),         we obtain \\(\\frac{1}{e^a}\\). What is the value of \\(a\\)?</string>
+    <string name="question10_title">A closed cylindrical vessel, in which the height is three times the radius, is increasing
+            in size, causing a change in the radius as a function of time according to the expression
+            \\(r = \\frac{t^2}{3} + 2t\\), the radius given in centimeters.\n\n When determining the rate of change of the total
+            area of the cylinder as a function of time at \\(t = 2s\\), we find the value \\(A\'(2) = \\frac{2560\\pi}{a}\\space cm^2/s\\).
+            What is the value of \\(a\\)?</string>
+    <string name="button_text_submit">CONFIRM</string>
 </resources>

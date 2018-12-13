@@ -2,7 +2,7 @@ package com.daedalusacademy.learncalculusbydoing;
 
 import androidx.lifecycle.ViewModel;
 
-public class MainActivityViewModel extends ViewModel {
+public class QuizActivityViewModel extends ViewModel {
     private static final int QUESTIONS_TOTAL = 10;
 
     private int score, questionNumber = 1;
