@@ -69,10 +69,10 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
     @Override
     public void highlightAnswer() {
         for (int i = 0; i < numberOfOptions; i++) {
-            if (questionButtons[i].isChecked() != this.answer[i]) {
+            if (questionButtons[i].isChecked() && !this.answer[i]) {
                 optionsBackground[i] = R.color.wrongAnswer;
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
-            } else {
+            } else if (this.answer[i]) {
                 optionsBackground[i] = R.color.correctAnswer;
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
             }
