@@ -1,4 +1,4 @@
-package com.daedalusacademy.learncalculusbydoing;
+package com.westgoten.learncalculusbydoing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +19,8 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClassName("com.daedalusacademy.learncalculusbydoing",
-                        "com.daedalusacademy.learncalculusbydoing.QuizActivity");
+                intent.setClassName("com.westgoten.learncalculusbydoing",
+                        "com.westgoten.learncalculusbydoing.QuizActivity");
                 startActivity(intent);
                 finish();
             }

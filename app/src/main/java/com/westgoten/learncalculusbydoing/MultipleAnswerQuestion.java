@@ -1,4 +1,4 @@
-package com.daedalusacademy.learncalculusbydoing;
+package com.westgoten.learncalculusbydoing;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,12 +7,12 @@ import android.content.res.TypedArray;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import io.github.kexanie.library.MathView;
 
-public class SingleAnswerQuestion implements ObjectiveQuestion {
+public class MultipleAnswerQuestion implements ObjectiveQuestion {
     private static final int numberOfOptions = 4;
     private static int numberOfQuestions = 0;
 
@@ -20,17 +20,17 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
     private Activity activity;
     private static MathView questionTitle;
     private static MathView[] questionOptions = new MathView[numberOfOptions];
-    private static RadioButton[] questionButtons = new RadioButton[numberOfOptions];
+    private static CheckBox[] questionButtons = new CheckBox[numberOfOptions];
     private boolean[] answer;
 
     private static boolean isContentViewVisible = true;
-    private static boolean areButtonsVisible = false;
+    private static boolean areButtonsVisible = true;
     private static boolean buttonsClickable = true;
     private static int[] optionsBackground = {R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
 
-    private static final String TAG = "SingleAnswerQuestion";
+    private static final String TAG = "MultipleAnswerQuestion";
 
-    public SingleAnswerQuestion(Context context, boolean[] answer) {
+    public MultipleAnswerQuestion(Context context, boolean[] answer) {
         this.activity = (Activity) context;
         this.answer = answer;
 
@@ -40,23 +40,22 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
     @Override
     public void setViewsText() {
         Resources resources = this.activity.getResources();
-        TypedArray SAQArray = resources.obtainTypedArray(R.array.SAQ_array1);
-        int SAQStringArrayId = SAQArray.getResourceId(this.questionNumber, 0);
+        TypedArray MAQArray = resources.obtainTypedArray(R.array.MAQ_array1);
+        int MAQStringArrayId = MAQArray.getResourceId(this.questionNumber, 0);
 
-        String[] SAQStringArray;
-        if (SAQStringArrayId > 0) {
-            SAQStringArray = resources.getStringArray(SAQStringArrayId);
+        String[] MAQStringArray;
+        if (MAQStringArrayId > 0) {
+            MAQStringArray = resources.getStringArray(MAQStringArrayId);
 
-            questionTitle.setText(SAQStringArray[0]);
+            questionTitle.setText(MAQStringArray[0]);
 
-            for (int i = 0; i < numberOfOptions; i++) {
-                questionOptions[i].setText(SAQStringArray[i+1]);
-            }
+            for (int i = 0; i < numberOfOptions; i++)
+                questionOptions[i].setText(MAQStringArray[i+1]);
         } else {
-            Log.v(TAG, "SAQStringArrayId doesn't exist.");
+            Log.v(TAG, "MAQStringArrayId doesn't exist");
         }
 
-        SAQArray.recycle();
+        MAQArray.recycle();
     }
 
     @Override
@@ -70,12 +69,12 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
     @Override
     public void highlightAnswer() {
         for (int i = 0; i < numberOfOptions; i++) {
-            if (this.answer[i]) {
-                optionsBackground[i] = R.color.correctAnswer;
-                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
-            } else if (questionButtons[i].isChecked()) {
+            if (questionButtons[i].isChecked() && !this.answer[i]) {
                 optionsBackground[i] = R.color.wrongAnswer;
                 ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.wrongAnswer);
+            } else if (this.answer[i]) {
+                optionsBackground[i] = R.color.correctAnswer;
+                ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(R.color.correctAnswer);
             }
 
             questionButtons[i].setClickable(false);
@@ -99,11 +98,10 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
         areButtonsVisible = isVisible;
 
         for (int i = 0; i < numberOfOptions; i++) {
-            if (isVisible) {
+            if (isVisible)
                 questionButtons[i].setVisibility(View.VISIBLE);
-            } else {
+            else
                 questionButtons[i].setVisibility(View.GONE);
-            }
         }
     }
 
@@ -133,41 +131,6 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
             parent.setVisibility(View.GONE);
     }
 
-    public static void setUpRadioButtons(Activity activity) {
-        for (int i = 0; i < numberOfOptions; i++) {
-            questionButtons[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    RadioButton radioButton = (RadioButton) buttonView;
-                    LinearLayout parent = (LinearLayout) radioButton.getParent();
-                    int buttonIndex = findButtonIndexInArray(radioButton);
-
-                    Button button = activity.findViewById(R.id.button);
-                    if (isChecked) {
-                        for (int i = 0; i < numberOfOptions; i++) {
-                            if (questionButtons[i] != radioButton && questionButtons[i].isChecked())
-                                questionButtons[i].setChecked(false);
-                        }
-
-                        if (!button.isEnabled()) {
-                            button.setEnabled(true);
-                        }
-
-                        if (optionsBackground[buttonIndex] == R.color.noAnswer) {
-                            parent.setBackgroundResource(R.color.selected);
-                            optionsBackground[buttonIndex] = R.color.selected;
-                        }
-                    } else {
-                        if (optionsBackground[buttonIndex] == R.color.selected) {
-                            parent.setBackgroundResource(R.color.noAnswer);
-                            optionsBackground[buttonIndex] = R.color.noAnswer;
-                        }
-                    }
-                }
-            });
-        }
-    }
-
     public static void resetNumberOfQuestions() {
         numberOfQuestions = 0;
     }
@@ -177,27 +140,28 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
 
         Resources resources = activity.getResources();
         TypedArray optionsArray = resources.obtainTypedArray(R.array.options_views_IDs);
-        TypedArray radioButtonsArray = resources.obtainTypedArray(R.array.radioButtons_IDs);
+        TypedArray checkBoxesArray = resources.obtainTypedArray(R.array.checkBoxes_IDs);
 
         for (int i = 0; i < numberOfOptions; i++) {
             int optionId = optionsArray.getResourceId(i, 0);
-            int radioButtonId = radioButtonsArray.getResourceId(i, 0);
+            int checkBoxId = checkBoxesArray.getResourceId(i, 0);
 
             if (optionId != 0) {
                 questionOptions[i] = activity.findViewById(optionId);
             } else
                 Log.v(TAG, "optionId doesn't exist");
 
-            if (radioButtonId != 0) {
-                questionButtons[i] = activity.findViewById(radioButtonId);
+            if (checkBoxId != 0) {
+                questionButtons[i] = activity.findViewById(checkBoxId);
                 questionButtons[i].setClickable(buttonsClickable);
+
                 if (areButtonsVisible) {
                     questionButtons[i].setVisibility(View.VISIBLE);
                     ((LinearLayout) questionButtons[i].getParent()).setBackgroundResource(optionsBackground[i]);
                 } else
                     questionButtons[i].setVisibility(View.GONE);
             } else
-                Log.v(TAG, "radioButtonId doesn't exist");
+                Log.v(TAG, "checkBoxId doesn't exist");
         }
 
         LinearLayout parent = (LinearLayout) questionButtons[0].getParent().getParent();
@@ -206,13 +170,48 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
         else
             parent.setVisibility(View.GONE);
 
+        for (CheckBox checkBox : questionButtons) {
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    LinearLayout parent = (LinearLayout) buttonView.getParent();
+                    int buttonIndex = findButtonIndexInArray(buttonView);
+                    if (isChecked) {
+                        Button button = activity.findViewById(R.id.button);
+                        if (!button.isEnabled()) {
+                            button.setEnabled(true);
+                        }
+
+                        if (optionsBackground[buttonIndex] == R.color.noAnswer) {
+                            parent.setBackgroundResource(R.color.selected);
+                            optionsBackground[buttonIndex] = R.color.selected;
+                        }
+                    } else {
+                        int checkedBoxes = 0;
+                        for (CheckBox checkBox1 : questionButtons)
+                            if (checkBox1.isChecked())
+                                checkedBoxes++;
+
+                        if (checkedBoxes == 0) {
+                            activity.findViewById(R.id.button).setEnabled(false);
+                        }
+
+                        if (optionsBackground[buttonIndex] == R.color.selected) {
+                            parent.setBackgroundResource(R.color.noAnswer);
+                            optionsBackground[buttonIndex] = R.color.noAnswer;
+                        }
+                    }
+                }
+            });
+        }
+
         optionsArray.recycle();
-        radioButtonsArray.recycle();
+        checkBoxesArray.recycle();
     }
 
     public static void resetViews() {
         isContentViewVisible = true;
-        areButtonsVisible = false;
+        areButtonsVisible = true;
         buttonsClickable = true;
         optionsBackground = new int[]{R.color.noAnswer, R.color.noAnswer, R.color.noAnswer, R.color.noAnswer};
     }
@@ -226,32 +225,26 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
         return -1;
     }
 
-    public static int getNumberOfOptions() {
-        return numberOfOptions;
-    }
+    public Activity getActivity() { return activity; }
 
-    public int getQuestionNumber() {
-        return questionNumber;
-    }
-
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public MathView getQuestionTitle() {
+    public static MathView getQuestionTitle() {
         return questionTitle;
     }
 
-    public MathView[] getQuestionOptions() {
+    public static MathView[] getQuestionOptions() {
         return questionOptions;
     }
 
-    public RadioButton[] getQuestionButtons() {
+    public static CheckBox[] getQuestionButtons() {
         return questionButtons;
     }
 
     public boolean[] getAnswer() {
         return answer;
+    }
+
+    public static int getNumberOfOptions() {
+        return numberOfOptions;
     }
 
     public static boolean isButtonsClickable() {

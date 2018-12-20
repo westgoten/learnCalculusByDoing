@@ -1,4 +1,4 @@
-package com.daedalusacademy.learncalculusbydoing;
+package com.westgoten.learncalculusbydoing;
 
 public interface Question {
     void setViewsText();

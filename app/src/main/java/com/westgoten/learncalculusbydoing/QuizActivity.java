@@ -1,4 +1,4 @@
-package com.daedalusacademy.learncalculusbydoing;
+package com.westgoten.learncalculusbydoing;
 
 import android.content.Intent;
 import android.widget.*;
@@ -13,7 +13,7 @@ public class QuizActivity extends AppCompatActivity {
     private QuizActivityViewModel viewModel;
 
     private static final int QUESTIONS_TOTAL = 10;
-    private static final String EXTRA_SCORE = "com.daedalusacademy.learncalculusbydoing.EXTRA_SCORE";
+    private static final String EXTRA_SCORE = "com.westgoten.learncalculusbydoing.EXTRA_SCORE";
     private static final String TAG = "QuizActivity";
 
     @Override
@@ -103,8 +103,8 @@ public class QuizActivity extends AppCompatActivity {
                         ((ObjectiveQuestion) nextQuestion).setContentViewVisibility(true);
                 } else if (currentButtonState.equals(buttonStateList[2])) {
                     Intent resultIntent = new Intent();
-                    resultIntent.setClassName("com.daedalusacademy.learncalculusbydoing",
-                            "com.daedalusacademy.learncalculusbydoing.QuizResultActivity");
+                    resultIntent.setClassName("com.westgoten.learncalculusbydoing",
+                            "com.westgoten.learncalculusbydoing.QuizResultActivity");
                     resultIntent.putExtra(EXTRA_SCORE, viewModel.getScore());
                     startActivity(resultIntent);
                     finish();

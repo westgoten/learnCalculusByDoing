@@ -1,4 +1,4 @@
-package com.daedalusacademy.learncalculusbydoing;
+package com.westgoten.learncalculusbydoing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizResultActivity extends AppCompatActivity {
-    private static final String EXTRA_SCORE = "com.daedalusacademy.learncalculusbydoing.EXTRA_SCORE";
+    private static final String EXTRA_SCORE = "com.westgoten.learncalculusbydoing.EXTRA_SCORE";
 
     @SuppressWarnings("deprecation")
     @Override
@@ -35,8 +35,8 @@ public class QuizResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClassName("com.daedalusacademy.learncalculusbydoing",
-                        "com.daedalusacademy.learncalculusbydoing.MenuActivity");
+                intent.setClassName("com.westgoten.learncalculusbydoing",
+                        "com.westgoten.learncalculusbydoing.MenuActivity");
                 startActivity(intent);
                 finish();
             }
