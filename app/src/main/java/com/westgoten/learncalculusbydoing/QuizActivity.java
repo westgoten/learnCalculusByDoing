@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProviders;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import io.github.kexanie.library.MathView;
 
 public class QuizActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     private QuizActivityViewModel viewModel;
 
     private static final int QUESTIONS_TOTAL = 10;
@@ -19,6 +22,8 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         setContentView(R.layout.activity_quiz);
 
         viewModel = ViewModelProviders.of(this).get(QuizActivityViewModel.class);
@@ -106,6 +111,7 @@ public class QuizActivity extends AppCompatActivity {
                     resultIntent.setClassName("com.westgoten.learncalculusbydoing",
                             "com.westgoten.learncalculusbydoing.QuizResultActivity");
                     resultIntent.putExtra(EXTRA_SCORE, viewModel.getScore());
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.TUTORIAL_COMPLETE, null);
                     startActivity(resultIntent);
                     finish();
                 }
