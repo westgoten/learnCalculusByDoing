@@ -9,4 +9,4 @@ Test your current knowledge regarding each question and find out in seconds if y
 <img src="./screenshot/screenshot_1.png" width="500">
 
 ## License
-Read about license rights and limitations [here]().
+Read about license rights and limitations [here](LICENSE).
