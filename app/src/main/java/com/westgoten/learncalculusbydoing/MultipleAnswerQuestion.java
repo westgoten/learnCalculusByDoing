@@ -170,6 +170,7 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
         else
             parent.setVisibility(View.GONE);
 
+        // Set up a specific highlight on MAQ's options and if the quiz button is enabled
         for (CheckBox checkBox : questionButtons) {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

@@ -149,6 +149,7 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
                                 questionButtons[i].setChecked(false);
                         }
 
+                        // Set up if the quiz button is enabled and a specific highlight on SAQ's options
                         if (!button.isEnabled()) {
                             button.setEnabled(true);
                         }
