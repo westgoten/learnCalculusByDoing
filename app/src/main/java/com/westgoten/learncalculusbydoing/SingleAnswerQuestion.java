@@ -135,18 +135,16 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
 
     public static void setUpRadioButtons(Activity activity) {
         for (int i = 0; i < numberOfOptions; i++) {
-            questionButtons[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            questionButtons[i].setOnCheckedChangeListener((buttonView, isChecked) -> {
                     RadioButton radioButton = (RadioButton) buttonView;
                     LinearLayout parent = (LinearLayout) radioButton.getParent();
                     int buttonIndex = findButtonIndexInArray(radioButton);
 
                     Button button = activity.findViewById(R.id.button);
                     if (isChecked) {
-                        for (int i = 0; i < numberOfOptions; i++) {
-                            if (questionButtons[i] != radioButton && questionButtons[i].isChecked())
-                                questionButtons[i].setChecked(false);
+                        for (int j = 0; j < numberOfOptions; j++) {
+                            if (questionButtons[j] != radioButton && questionButtons[j].isChecked())
+                                questionButtons[j].setChecked(false);
                         }
 
                         // Set up if the quiz button is enabled and a specific highlight on SAQ's options
@@ -164,8 +162,7 @@ public class SingleAnswerQuestion implements ObjectiveQuestion {
                             optionsBackground[buttonIndex] = R.color.noAnswer;
                         }
                     }
-                }
-            });
+                });
         }
     }
 

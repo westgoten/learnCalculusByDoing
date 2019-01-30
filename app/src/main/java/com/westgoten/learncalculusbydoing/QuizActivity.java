@@ -70,9 +70,7 @@ public class QuizActivity extends AppCompatActivity {
                 getString(R.string.button_text_next),
                 getString(R.string.button_text_finish)};
 
-        clickButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        clickButton.setOnClickListener(v -> {
                 Button button = (Button) v;
                 String currentButtonState = button.getText().toString();
                 Question currentQuestion = viewModel.getQuestionsList()[viewModel.getQuestionNumber()-1];
@@ -115,8 +113,7 @@ public class QuizActivity extends AppCompatActivity {
                     startActivity(resultIntent);
                     finish();
                 }
-            }
-        });
+            });
     }
 
     private void setUpNextQuestionText() {
@@ -134,10 +131,7 @@ public class QuizActivity extends AppCompatActivity {
         // Set up interactive text on ObjectiveQuestions' options
         for (MathView mathView : MultipleAnswerQuestion.getQuestionOptions()) {
             LinearLayout parent = (LinearLayout) mathView.getParent();
-            parent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LinearLayout parent = (LinearLayout) v;
+            parent.setOnClickListener(v -> {
                     Question currentQuestion = viewModel.getQuestionsList()[viewModel.getQuestionNumber() - 1];
                     if (currentQuestion instanceof MultipleAnswerQuestion) {
                         CheckBox checkBox = (CheckBox) parent.getChildAt(0);
@@ -150,8 +144,7 @@ public class QuizActivity extends AppCompatActivity {
                         if (!radioButton.isChecked())
                             radioButton.setChecked(true);
                     }
-                }
-            });
+                });
 
             // Fix state change of the LinearLayout caused by setOnClickListener() method
             Question currentQuestion = viewModel.getQuestionsList()[viewModel.getQuestionNumber() - 1];

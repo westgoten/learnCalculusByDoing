@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -31,15 +30,12 @@ public class QuizResultActivity extends AppCompatActivity {
         scoreView.setText(string);
 
         Button button = findViewById(R.id.result_to_menu_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button.setOnClickListener(v -> {
                 Intent intent = new Intent();
                 intent.setClassName("com.westgoten.learncalculusbydoing",
                         "com.westgoten.learncalculusbydoing.MenuActivity");
                 startActivity(intent);
                 finish();
-            }
-        });
+            });
     }
 }

@@ -172,10 +172,8 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
 
         // Set up a specific highlight on MAQ's options and if the quiz button is enabled
         for (CheckBox checkBox : questionButtons) {
-            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    LinearLayout parent = (LinearLayout) buttonView.getParent();
+            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    LinearLayout checkBoxParent = (LinearLayout) buttonView.getParent();
                     int buttonIndex = findButtonIndexInArray(buttonView);
                     if (isChecked) {
                         Button button = activity.findViewById(R.id.button);
@@ -184,7 +182,7 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
                         }
 
                         if (optionsBackground[buttonIndex] == R.color.noAnswer) {
-                            parent.setBackgroundResource(R.color.selected);
+                            checkBoxParent.setBackgroundResource(R.color.selected);
                             optionsBackground[buttonIndex] = R.color.selected;
                         }
                     } else {
@@ -198,12 +196,11 @@ public class MultipleAnswerQuestion implements ObjectiveQuestion {
                         }
 
                         if (optionsBackground[buttonIndex] == R.color.selected) {
-                            parent.setBackgroundResource(R.color.noAnswer);
+                            checkBoxParent.setBackgroundResource(R.color.noAnswer);
                             optionsBackground[buttonIndex] = R.color.noAnswer;
                         }
                     }
-                }
-            });
+                });
         }
 
         optionsArray.recycle();
